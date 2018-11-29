@@ -1,0 +1,36 @@
+Errata
+- 3 submitted: last submission 07 Jun 2018 
+
+Errata Type : Code : Page No 236 
+
+At the bottom of page 236 the last line of code reads like this: 
+api.execute_kw(db, uid, pwd, 'res.partner', 'search_count'[[]]) 
+
+it's missing a comma after search_count, the line should be: 
+api.execute_kw(db, uid, pwd, 'res.partner', 'search_count',[[]])
+
+ 
+
+Errata Type: Code | Chapter 3 | Page 71
+Under:The convention is to keep security-related files in a security subdirectory, so we will create a security/todo_access_rules.xml file with the following content:
+
+This:
+('message_follower_ids','in',
+
+Should be:
+('message_partner_ids','in',
+
+Errata Type: Typo | Chapter 5 | Page 100
+This:
+Some field names are special, wither because they are reserved by the ORM for special purposes,
+
+Should be:
+Some field names are special, either because they are reserved by the ORM for specialpurposes,
+
+Errata Type: Code | Page 29
+
+It is: 
+--without-demo-data=all
+
+Should be:
+--without-demo=all

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
   <data noupdate="1">
-
-    <record id="todo_app.todo_task_user_rule" model="ir.rule">
+    <record id="tiennn_todo_app.todo_task_user_rule" model="ir.rule">
         <field name="name">ToDo Tasks for owner and followers</field>
         <field name="model_id" ref="model_todo_task"/>
         <field name="groups" eval="[(4, ref('base.group_user'))]"/>
@@ -12,6 +11,5 @@
           ]
         </field>
     </record>
-
   </data>
 </openerp>

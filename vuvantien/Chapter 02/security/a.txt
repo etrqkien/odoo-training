@@ -1,5 +1,0 @@
-id là mã dịnh danh bên ngoài
-name: tiêu để mô tả "tên module.nhóm"
-model_id: mã định danh bên ngoài của mô hình cần cấp quyền||rel= model_todo_task
-group_id :nhóm cần cấp quyền truy cập| base.group_user : nhóm cấp quyền
-perm: các trường perm gắn cờ quyền truy cập để cấp quyền truy cập đọc, ghi, tạo hoặc hủy liên kết (xóa).

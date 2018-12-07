@@ -7,7 +7,7 @@
                     view_mode="tree,form"/>
         <!-- Menu item to open To-do Task list -->
         <menuitem id="menu_todo_task"
-                  name="Todos"
+                  name="Todo"
                   action="action_todo_task"/>
     </data>
 </odoo>

@@ -1,7 +1,14 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- To-Do Task Form view -->
+
+        <!-- This Menu Item must have a parent and an action -->
+        <record id="todo_task_act" model="ir.actions.act_window">
+            <field name="name">Todo</field>
+            <field name="res_model">todo.task</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
         <record id="view_form_todo_task" model="ir.ui.view">
             <field name="name">To-do Task Form</field>
             <field name="model">todo.task</field>
@@ -44,7 +51,7 @@
                 </tree>
             </field>
         </record>
-<!--khung tìm kiếm-->
+        <!--khung tìm kiếm-->
         <!-- To-Do Task Search view -->
         <record id="view_filter_todo_task" model="ir.ui.view">
             <field name="name">To-do Task Filter</field>
@@ -52,6 +59,7 @@
             <field name="arch" type="xml">
                 <search>
                     <field name="name"/>
+                    <!--tìm kiếm bằng cách đặt tên miền-->
                     <filter string="Not Done" domain="[('is_done','=',False)]"/>
                     <filter string="Done" domain="[('is_done','!=',False)]"/>
                 </search>
@@ -59,3 +67,5 @@
         </record>
     </data>
 </odoo>
+
+

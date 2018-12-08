@@ -4,8 +4,7 @@ from odoo.exceptions import ValidationError
 
 class TodoTask(models.Model):
     _name = 'todo.task'
-    _inherit = ['todo.task',
-                'mail.thread']
+    _inherit = ['todo.task', 'mail.thread']
 
     user_id = fields.Many2one('res.users', 'Responsible')
     date_deadline = fields.Date('Deadline')
@@ -27,9 +26,3 @@ class TodoTask(models.Model):
                 raise ValidationError(
                     'Only the responsible can do this!')
         return super(TodoTask, self).do_toggle_done()
-    #để kiểm tra xem không có nhiệm vụ nào để chuyển đổi thuộc về cho người dùng khác.
-#Nếu qua,sẽ tiếp tục gọi phương thức lớp cha, sử dụng super (). Nếu không ném ngoại lệ
-
-    #chỉ xóa nhiệm vụ của user_id
-#super gọi đến phương thức cha
-

@@ -15,7 +15,7 @@ class TodoTask(models.Model):
             task.is_done = not task.is_done
         return True
 
-    @api.multi
+    @api.model
     def do_clear_done(self):
         self.search(['is_done', '=', True]).write({'active': False})
         return True

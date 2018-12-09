@@ -4,12 +4,10 @@ from odoo.tests.common import TransactionCase
 
 
 class TestTodo(TransactionCase):
-
     def test_create(self):
         "Create a simple Todo"
         task = self.env['todo.task'].create({'name': 'Test Task'})
         self.assertEqual(task.is_done, False)
-
         # Test Toggle Done
         task.do_toggle_done()
         self.assertTrue(task.is_done)

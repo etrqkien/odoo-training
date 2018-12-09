@@ -6,7 +6,6 @@
     'installable': True,
     'application': True,
     'demo': [
-
     ],
     'data': [
         'views/todo_task.xml',

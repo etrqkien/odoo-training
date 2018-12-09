@@ -8,7 +8,6 @@ class TestTodo(TransactionCase):
         "Create a simple Todo"
         task = self.env['todo.task'].create({'name': 'Test Task'})
         self.assertEqual(task.is_done, False)
-        # Test Toggle Done
         task.do_toggle_done()
         self.assertTrue(task.is_done)
         # Test Clear Done

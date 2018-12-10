@@ -1,0 +1,10 @@
+Để viết trên một lĩnh vực nhiều, chúng tôi sử dụng một danh sách các bộ ba. Mỗi bộ ba là một lệnh ghi khác nhau
+những thứ theo mã được sử dụng: (0, _, {'field': value}) tạo một bản ghi mới và liên kết nó với bản ghi này
+(1, id, {'field': value}) cập nhật các giá trị trên bản ghi đã được liên kết
+(2, id, _) hủy liên kết và xóa một bản ghi liên quan
+(3, id, _) hủy liên kết nhưng không xóa một bản ghi liên quan
+(4, id, _) liên kết một bản ghi đã tồn tại
+(5, _, _) hủy liên kết nhưng không xóa tất cả các bản ghi được liên kết
+(6, _, [ids]) thay thế danh sách các bản ghi được liên kết với danh sách được cung cấp
+Biểu tượng gạch dưới được sử dụng trong danh sách trước biểu thị các giá trị không liên quan, thường được điền bằng 0 hoặc
+Sai .

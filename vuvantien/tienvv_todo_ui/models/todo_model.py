@@ -156,7 +156,7 @@ class TodoTask(models.Model):
             if len(todo.name) < 5:
                 raise ValidationError('Title must have 5 chars!')
 
-    # Chapter 06 Smart Button statistic
+    # hàm tính toán số task của user
     def compute_user_todo_count(self):
         for task in self:
             task.user_todo_count = task.search_count(

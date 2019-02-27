@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Menu Item-->
+    <!--Modify Top menu item-->
+    <menuitem id="todo_app.menu_todo_task" name="To-Do"/>
+
+    <!--Action for menu Item-->
+    <act_window id="action_todo_stage"
+                name="To-do Task"
+                res_model="todo.task.stage"
+                view_mode="tree,form"
+                target="current"
+                context="{'default_state': 'open'}"
+                domain="[]"
+                limit="80"/>
+    <act_window id="todo_app.action_todo_task"
+                name="Todo Task"
+                res_model="todo.task"
+                view_mode="tree,form,graph,calendar,pivot"
+                target="current"
+                context="{'search_default_filter_my_tasks': True}"/>
+
+    <!--Add option to more Button-->
+    <act_window id="action_todo_task_stage"
+                name="To-do Task Stages"
+                res_model="todo.task.stage"
+                src_model="todo.task"
+                multi="False"/>
+
+    <!--App menu Item-->
+    <menuitem id="menu_todo_task_view"
+              name="Tasks"
+              parent="todo_app.menu_todo_task"
+              sequence="10"
+              action="todo_app.action_todo_task"/>
+
+    <menuitem id="menu_todo_config"
+              name="Configuration"
+              parent="todo_app.menu_todo_task"
+              sequence="100"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_todo_task_stage"
+              name="Stages"
+              parent="menu_todo_config"
+              sequence="10"
+              action="action_todo_stage"/>
+
+
+</odoo>

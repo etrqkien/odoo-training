@@ -2,7 +2,7 @@
 <odoo>
     <!--Menu Item-->
     <!--Modify Top menu item-->
-    <menuitem id="todo_app.menu_todo_task" name="To-Do"/>
+    <menuitem id="huydd_todo_app.menu_todo_task" name="To-Do"/>
 
     <!--Action for menu Item-->
     <act_window id="action_todo_stage"
@@ -13,7 +13,7 @@
                 context="{'default_state': 'open'}"
                 domain="[]"
                 limit="80"/>
-    <act_window id="todo_app.action_todo_task"
+    <act_window id="huydd_todo_app.action_todo_task"
                 name="Todo Task"
                 res_model="todo.task"
                 view_mode="tree,form,graph,pivot"
@@ -30,13 +30,13 @@
     <!--App menu Item-->
     <menuitem id="menu_todo_task_view"
               name="Tasks"
-              parent="todo_app.menu_todo_task"
+              parent="huydd_todo_app.menu_todo_task"
               sequence="10"
-              action="todo_app.action_todo_task"/>
+              action="huydd_todo_app.action_todo_task"/>
 
     <menuitem id="menu_todo_config"
               name="Configuration"
-              parent="todo_app.menu_todo_task"
+              parent="huydd_todo_app.menu_todo_task"
               sequence="100"
               groups="base.group_system"/>
 

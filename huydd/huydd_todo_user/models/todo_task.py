@@ -14,7 +14,7 @@ class TodoTask(models.Model):
     def do_clear_done(self):
         domain = [("is_done", "=", True),
                   "|",
-                  ("user_id", "=", self.env.uid),
+                  ("user_id", "=", self.env.uid),3
                   ("user_id", "=", False)]
         dones = self.search(domain)
         dones.write({"active": False})
@@ -24,6 +24,6 @@ class TodoTask(models.Model):
     def do_toggle_done(self):
         for task in self:
             if task.user_id != self.env.user:
-                raise ValidationError("Responsible can do this")
+                raise ValidationError("Just Owner responsible can do this")
 
         return super(TodoTask, self).do_toggle_done()

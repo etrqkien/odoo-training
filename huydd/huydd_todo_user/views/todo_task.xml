@@ -3,7 +3,7 @@
     <record id="view_form_todo_task_inherited" model="ir.ui.view">
         <field name="name">Todo Task Form - User Extension</field>
         <field name="model">todo.task</field>
-        <field name="inherit_id" ref="todo_app.view_form_todo_task"/>
+        <field name="inherit_id" ref="huydd_todo_app.view_form_todo_task"/>
         <field name="arch" type="xml">
             <!--<xpath expr="//field[@name]='is_done'" position="before">-->
                 <!--<field name="date_deadline"/>-->
@@ -33,7 +33,7 @@
     <record id="view_tree_todo_task_inherited" model="ir.ui.view">
         <field name="name">Todo Task Form - User Extension</field>
         <field name="model">todo.task</field>
-        <field name="inherit_id" ref="todo_app.view_tree_todo_task"/>
+        <field name="inherit_id" ref="huydd_todo_app.view_tree_todo_task"/>
         <field name="arch" type="xml">
             <field name="name" position="after">
                 <field name="user_id"/>
@@ -44,7 +44,7 @@
     <record id="view_filter_todo_task_inherited" model="ir.ui.view">
         <field name="name">Todo Task Tree - User Extension</field>
         <field name="model">todo.task</field>
-        <field name="inherit_id" ref="todo_app.view_filter_todo_task"/>
+        <field name="inherit_id" ref="huydd_todo_app.view_filter_todo_task"/>
         <field name="arch" type="xml">
             <field name="name" position="after">
                 <field name="user_id"/>
@@ -56,12 +56,12 @@
     </record>
 
     <!--Modify menu item-->
-    <record id="todo_app.menu_todo_task" model="ir.ui.menu">
+    <record id="huydd_todo_app.menu_todo_task" model="ir.ui.menu">
         <field name="name">My Todo</field>
     </record>
 
     <!--Action to open Todo Task List-->
-    <record model="ir.actions.act_window" id="todo_app.action_todo_task">
+    <record model="ir.actions.act_window" id="huydd_todo_app.action_todo_task">
         <field name="context">
             {"search_default_filter_my_tasks": True}
         </field>

@@ -77,7 +77,7 @@
 
     </record>
 
-    <record id="todo_app.view_tree_todo_task" model="ir.ui.view">
+    <record id="huydd_todo_app.view_tree_todo_task" model="ir.ui.view">
         <field name="model">todo.task</field>
         <field name="arch" type="xml">
             <tree>

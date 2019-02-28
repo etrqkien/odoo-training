@@ -16,7 +16,7 @@
     <act_window id="todo_app.action_todo_task"
                 name="Todo Task"
                 res_model="todo.task"
-                view_mode="tree,form,graph,calendar,pivot"
+                view_mode="tree,form,graph,pivot"
                 target="current"
                 context="{'search_default_filter_my_tasks': True}"/>
 

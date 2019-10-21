@@ -1,11 +1,12 @@
 
 {
-    'name' : 'Sales',
+
+    'name' : 'Sales Inherit',
     'version' : '1.0',
-    'summary': 'Sales',
+    'summary': 'phần mềm sale',
     'sequence': 1,
     'description': """
-
+        Phần mềm quản lý đơn hàng, khách hàng
     """,
     'category': '',
     'website': '',

@@ -7,11 +7,15 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook/page[3]" position="after">
                     <page string="Tags"  name="tag">
-                        <field name="tag_id" widget="many2many_checkboxes" mode="tree">
-                            <tree string="Tags">
-                                <field name="name" string="Tag"/>
-                            </tree>
-                        </field>
+                        <group>
+                            <group>
+                                <field name="tag_ids" widget="many2many_checkboxes" mode="tree">
+                                    <tree string="Tags">
+                                        <field name="name" string="Tag"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
                     </page>
                 </xpath>
             </field>

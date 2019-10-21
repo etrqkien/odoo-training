@@ -10,7 +10,7 @@
     'category': '',
     'website': '',
     'depends': [
-        'base','crm','sale'
+        'base','sale'
     ],
     'data': [
         'security/group.xml',

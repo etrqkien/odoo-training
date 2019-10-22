@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="order_tag_form_view" model="ir.ui.view">
+            <field name="name">order_tag_form_view</field>
+            <field name="model">sale.order.tag</field>
+            <field name="arch" type="xml">
+                <form string="Sale Order Tag">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="open_parent" type="object"
+                                    class="oe_stat_button" icon="fa-pencil-square-o">
+                                <field name="order_count" string="Order"
+                                       widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
         <record id="order_tag_tree_view" model="ir.ui.view">
             <field name="name">Sale Order Tag</field>
             <field name="model">sale.order.tag</field>
             <field name="arch" type="xml">
-                <tree string="Sale Order Tag" editable="bottom">
+                <tree string="Sale Order Tag" >
                     <field name="name"/>
                 </tree>
             </field>
@@ -22,4 +42,3 @@
                       sequence="4"/>
     </data>
 </odoo>
-

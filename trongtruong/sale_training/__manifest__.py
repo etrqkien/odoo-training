@@ -1,7 +1,6 @@
 
 {
-
-    'name' : 'Sales Inherit',
+    'name' : 'Sales Oder tag',
     'version' : '1.0',
     'summary': 'phần mềm sale',
     'sequence': 1,
@@ -11,10 +10,13 @@
     'category': '',
     'website': '',
     'depends': [
-        'base','crm'
+        'base','sale'
     ],
     'data': [
-        'views/res_partner_view.xml',
+        'security/group.xml',
+        'security/ir.model.access.csv',
+        'views/sale_order_tag.xml',
+        'views/sale_order_sub_view.xml',
     ],
     'installable': True,
     'application': True,

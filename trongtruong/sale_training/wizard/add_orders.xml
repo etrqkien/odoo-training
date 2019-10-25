@@ -25,7 +25,6 @@
             <field name="res_model">add.orders</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
-            <field name="domain">[('order.state', '=', ('draft', 'sent', 'cancel'))]</field>
         </record>
 
         <record id="view_partner_form_inherit" model="ir.ui.view">
@@ -33,11 +32,9 @@
             <field name="model">sale.order.tag</field>
             <field name="inherit_id" ref="sale_training.order_tag_form_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//form/sheet" position="before">
-                    <header>
-                        <button name="%(sale_training.action_tag_add_order_wizard)d"
-                                string="Add Order" class="oe_highlight" type="action"/>
-                    </header>
+                <xpath expr="//form/header/button[@name='clear_tag']" position="before">
+                    <button name="%(sale_training.action_tag_add_order_wizard)d"
+                            string="Add Order" class="oe_highlight" type="action"/>
                 </xpath>
             </field>
         </record>

@@ -4,7 +4,8 @@ from odoo import models, fields, api
 class AddTagToOrders(models.TransientModel):
     _name = 'add.orders'
 
-    order = fields.Many2many(comodel_name="sale.order", string="Order",)
+    order = fields.Many2many(comodel_name="sale.order", string="Order",
+                             domain=[('state', 'not in', ('draft', 'sent', 'cancel'))])
 
     @api.multi
     def add_orders(self):

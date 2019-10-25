@@ -23,3 +23,8 @@ class SaleOderTag(models.Model):
     def orders_count(self):
         count = self.env['sale.order'].search_count([('tag_ids', 'in', self.ids), ('state', '=', 'sale')])
         self.order_count = count
+
+    def clear_tag(self):
+        seach_order = self.env['sale.order'].search([('tag_ids', 'in', self.ids), ('state', '=', 'sale')])
+        for order in seach_order:
+            order.tag_ids = [(3, self.id, 0)]

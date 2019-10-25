@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <template id="report_sale_order">
+            <div class="article">
+                <center><h2>Sale Order List</h2></center>
+                <br/>
+                <table class="table table-condensed table-bordered" style="width: 100%">
+                    <thead>
+                        <th class="text-center" style="width: 15%">Order Number</th>
+                        <th class="text-center" style="width: 25%">Confirmation Date</th>
+                        <th class="text-center" style="width: 25%">Customer</th>
+                        <th class="text-center" style="width: 20%">Total</th>
+                        <th class="text-center" style="width: 15%">State</th>
+                    </thead>
+                    <tbody>
+                        <t t-call="web.html_container">
+                            <t t-foreach="docs" t-as="doc">
+                                <tr>
+                                    <td class="text-center">
+                                        <span t-esc="doc['name']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="doc['date_order']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="doc.partner_id.name"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="doc['amount_total']"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <div t-field="doc.state"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+
+    </data>
+</odoo>

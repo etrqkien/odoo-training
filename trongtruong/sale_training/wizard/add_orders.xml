@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form string="Add Order">
                     <group>
-                        <field name="order" widget="many2many_checkboxes"
+                        <field name="order_ids" widget="many2many_checkboxes"
                                options="{'no_create': True, 'no_create_edit':True}"/>
                     </group>
                     <footer>

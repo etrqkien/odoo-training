@@ -8,7 +8,7 @@ class InheritSaleTag(models.Model):
     _rec_name = 'name1'
 
     name1 = fields.Char(string='Name')
-    tag_count = fields.Integer(string='Total', compute='_get_tag_count', store=True)
+    tag_count = fields.Integer(string='Total', compute='_get_tag_count')
 
     @api.multi
     def _get_tag_count(self):

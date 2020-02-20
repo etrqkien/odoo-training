@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_template_multi_order">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout" t-lang="en_US">
+                    <div class="page">
+                        <style>
+                            .table { border-collapse: collapse; width:100%; border: 1px solid black;}
+                            .table > thread > tr {border: 1px solid black; padding: 5px;}
+                            .table > tbody > tr > th {border: 1px solid black; padding: 5px;}
+                            .table > tbody > tr > td {border: 1px solid black; padding: 5px;}
+                            .table > tr > th {border: 1px solid black; padding: 5px;}
+                            .table > tr > td {border: 1px solid black; padding: 5px;}
+                        </style>
+                        <div style="width: 40%;float: left;margin-top: 20px">
+                            <img src="/vanlinh/static/images/logo.jpe"
+                                 style="max-width:230px;max-height:230px;"/>
+                        </div>
+                        <br clear="both"/>
+                        <br clear="both"/>
+                        <br clear="both"/>
+                        <div style="width:100%">
+                            <div style="width:100%; margin-top:0px; font-size: 13px;">
+                                <div style="width:100%; margin: 0px; padding: 5px; font-size: 30px;"
+                                     class="text-center">
+                                    <b>HÓA ĐƠN THANH TOÁN</b>
+                                </div>
+                                <div style="width: 100%; margin-top: 15px; padding: 0px;"
+                                     class="text-center">
+                                    <p>
+                                        Ngày
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d')"/>
+                                        tháng
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%m')"/>
+                                        năm
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="width: 100%;float: left;font-size:10px; margin-top: 5px;margin-left: 20px;padding-right:40px;">
+                            <table class="table" style="width: 100%;height: 30px; margin: 1px">
+                                <thread>
+                                    <t t-set="number" t-value="1"/>
+                                    <tr style="padding:1px; margin: 1px;">
+                                        <th class="text-center" width="2%"
+                                            style="padding:1px; margin: 1px;" rowspan="2">
+                                            <p style="padding:1px; margin: 1px;">STT</p>
+                                        </th>
+                                        <th class="text-center" width="5%"
+                                            style="padding:1px; margin: 1px;" rowspan="2">
+                                            <p style="padding:1px; margin: 1px;">Mã báo giá</p>
+                                        </th>
+                                        <th class="text-center" width="15%"
+                                            style="padding:1px; margin: 1px;" rowspan="2">
+                                            <p style="padding:1px; margin: 1px;">Ngày báo giá</p>
+                                        </th>
+                                        <th class="text-center" width="7%"
+                                            style="padding:1px; margin: 1px;" rowspan="2">
+                                            <p style="padding:1px; margin: 1px;">Khách hàng</p>
+                                        </th>
+                                        <th class="text-center" width="7%"
+                                            style="padding:1px; margin: 1px;" rowspan="2">
+                                            <p style="padding:1px; margin: 1px;">Nhân viên kinh
+                                                doanh
+                                            </p>
+                                        </th>
+                                        <th class="text-center" width="10%"
+                                            style="padding:1px; margin: 1px;" rowspan="2">
+                                            <p style="padding:1px; margin: 1px;">Tổng</p>
+                                        </th>
+                                        <th class="text-center" width="10%"
+                                            style="padding:1px; margin: 1px;" rowspan="2">
+                                            <p style="padding:1px; margin: 1px;">Trạng thái</p>
+                                        </th>
+                                    </tr>
+                                </thread>
+                                <t t-foreach="docs" t-as="doc">
+                                    <tbody>
+                                        <tr t-foreach="doc" t-as="line"
+                                            style="padding:1px; margin: 1px">
+                                            <t t-set="number" t-value="number+1"/>
+                                            <td id="td1" class="text-center" width="2%"
+                                                style="padding:1px; margin: 1px">
+                                                <t t-esc="number -1"/>
+                                            </td>
+                                            <td style="padding:1px; margin: 1px;text-align: left">
+                                                <span style="padding:1px; margin-left: 10px;"
+                                                      t-field="line.name"/>
+                                            </td>
+                                            <td class="text-center"
+                                                style="padding: 1px; margin: 1px">
+                                                <span style="padding: 1px; margin: 1px;"
+                                                      t-field="line.confirmation_date"/>
+                                            </td>
+                                            <td class="text-center"
+                                                style="padding: 1px; margin: 1px">
+                                                <span style="padding: 1px; margin: 1px;"
+                                                      t-field="line.partner_id"/>
+                                            </td>
+                                            <td class="text-center"
+                                                style="padding: 1px; margin: 1px">
+                                                <span style="padding: 1px; margin: 1px;"
+                                                      t-field="line.user_id"/>
+                                            </td>
+                                            <td class="text-center"
+                                                style="padding: 1px; margin: 1px">
+                                                <span style="padding: 1px; margin: 1px;"
+                                                      t-field="line.amount_total"/>
+                                            </td>
+                                            <td class="text-center"
+                                                style="padding: 1px; margin: 1px">
+                                                <span style="padding: 1px; margin: 1px;"
+                                                      t-field="line.invoice_status"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </t>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <record id="paper_format_report_template_multi_order" model="report.paperformat">
+            <field name="name">Order Print</field>
+            <field name="default" eval="False"/>
+            <field name="format">A5</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">2</field>
+            <field name="margin_bottom">2</field>
+            <field name="margin_left">2</field>
+            <field name="margin_right">2</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+                id="qweb_order"
+                model="sale.order"
+                string="In phiếu tên"
+                report_type="qweb-pdf"
+                name="vanlinh.report_template_multi_order"
+                file="vanlinh.report_template_multi_order"
+                paperformat="vanlinh.paper_format_report_template_multi_order"
+                print_report_name="('Order - %s' % (object.code))"/>
+
+    </data>
+</odoo>

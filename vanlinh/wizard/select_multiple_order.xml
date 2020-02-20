@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="form_view_select_multi_order_wizard" model="ir.ui.view">
+            <field name="name">form.view.select.multi.product.wizard</field>
+            <field name="model">select.multiple.order</field>
+            <field name="arch" type="xml">
+                <form string="Select Multiple Order">
+                    <sheet>
+                        <group>
+                            <field name="sale_order_ids" widget="many2many_checkboxes">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button class="btn-primary" name="select_multiple_order" type="object" string="Save"/>
+                        Or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_select_multi_order_wizard" model="ir.actions.act_window">
+            <field name="name">Select Multiple Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">select.multiple.order</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="view_order_form_inherit_add_multi_order_selection_button" model="ir.ui.view">
+            <field name="name">add.multi.order.selection.button</field>
+            <field name="model">sale.order.tag</field>
+            <field name="inherit_id" ref="vanlinh.sale_order_tag_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="%(action_select_multi_order_wizard)d" type="action" class="btn-primary" string="Select Order"/>
+                    </header>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

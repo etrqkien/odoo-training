@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="sale_order_tag_tree_view" model="ir.ui.view">
+            <field name="name">Sale Order</field>
+            <field name="model">sale.order.tag</field>
+            <field name="arch" type="xml">
+                <tree string="Orders">
+                    <field name="name1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sale_order_tag_form_view" model="ir.ui.view">
+            <field name="name">Sale Order</field>
+            <field name="model">sale.order.tag</field>
+            <field name="arch" type="xml">
+                <form string="Orders">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="%(vanlinh.order_action_by_tag)d"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-wpforms">
+                                <field name="tag_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name1" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="order_action_by_tag" model="ir.actions.act_window">
+            <field name="name">Tag</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name='domain'>[('tag_ids1', '=', active_id)]</field>
+        </record>
+
+        <record id="action_sale_order_tags" model="ir.actions.act_window">
+            <field name="name">Order Tags</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.tag</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_sale_order_add_tag" model="ir.ui.view">
+            <field name="name">Add Tag</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='other_information']" position="after">
+                    <page string="Tags">
+                        <field name="tag_ids1" widget="many2many_checkboxes"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_order_view_search_inherit_tag1" model="ir.ui.view">
+            <field name="name">sale.order.search.inherit.tag1</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//search/field[@name='order_line']" position="after">
+                        <field name="tag_ids1" string="Tag"/>
+                    </xpath>
+            </field>
+        </record>
+
+        <record id="sale_order_view_search_has_tag111" model="ir.ui.view">
+            <field name="name">sale.order.search.has.tag111</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                        <filter name="add_has_tag1" string="Has Tag" domain="[('tag_ids1', '!=', False)]"/>
+                        <separator/>
+                    </xpath>
+            </field>
+        </record>
+
+
+        <menuitem id="menu_sale_order_tags"
+        name="Order Tags"
+        parent="sale.menu_sales_config"
+        sequence="3"
+        action="action_sale_order_tags"
+        groups="base.group_system"/>
+    </data>
+</odoo>

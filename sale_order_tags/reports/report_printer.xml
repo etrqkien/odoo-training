@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <report
+            id="action_report_print"
+            model="sale.order"
+            string="In phiếu tên"
+            report_type="qweb-pdf"
+            name="sale_order_tags.report_print"
+            file="sale_order_tags.report_print"
+    />
+    <record id="paperformat_A5" model="report.paperformat">
+        <field name="name">Format A5</field>
+        <field name="format">A5</field>
+        <field name="default" eval="True"/>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">2</field>
+        <field name="dpi">90</field>
+    </record>
+<!--    <record id="sale.order.tags.action_report_print" model="ir.actions.report.xml">-->
+<!--        <field name="paperformat_id" ref="sale.order.tags.paperformat_A5"/>-->
+<!--    </record>-->
+</odoo>

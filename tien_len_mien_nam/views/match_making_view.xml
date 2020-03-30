@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="play_room_view_act" model="ir.actions.act_window">
+            <field name="name">Play Room</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">play.room</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="play_room_view_form" model="ir.ui.view">
+            <field name="name">Trận đấu</field>
+            <field name="model">play.room</field>
+            <field name="arch" type="xml">
+                <form string="Trận đấu">
+                    <sheet>
+                        <group>
+                            <div>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                            </div>
+                            <div>
+                                <group>
+                                    <field name="player1_name"/>
+                                    <field name="player1_score"/>
+                                </group>
+                                <group>
+                                    <field name="player2_name"/>
+                                    <field name="player2_score"/>
+                                </group>
+                                <group>
+                                    <field name="player3_name"/>
+                                    <field name="player3_score"/>
+                                </group>
+                                <group>
+                                    <field name="player4_name"/>
+                                    <field name="player4_score"/>
+                                </group>
+                            </div>
+                        </group>
+                        <notebook>
+                            <page string="Detail Match">
+                                <field name="play_matchs">
+                                    <tree>
+                                        <field name="round" style="width : 10%;"/>
+                                        <field name="player1_score_match" style="width : 22,5%;"/>
+                                        <field name="player2_score_match" style="width : 22,5%;"/>
+                                        <field name="player3_score_match" style="width : 22,5%;"/>
+                                        <field name="player4_score_match" style="width : 22,5%;"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="play_room_view_tree" model="ir.ui.view">
+            <field name="name">Play Room Tree View</field>
+            <field name="model">play.room</field>
+            <field name="arch" type="xml">
+                <tree string="Play Room">
+                    <field name="name"/>
+                    <field name="time_room"/>
+                    <field name="player1_name"/>
+                    <field name="player2_name"/>
+                    <field name="player3_name"/>
+                    <field name="player4_name"/>
+                </tree>
+            </field>
+        </record>
+        <menuitem id="play_room_menu" name="Play Room" action="play_room_view_act"
+                 sequence="1"/>
+    </data>
+</odoo>

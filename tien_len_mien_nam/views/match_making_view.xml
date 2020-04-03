@@ -63,13 +63,17 @@
                     <field name="name"/>
                     <field name="time_room"/>
                     <field name="player1_name"/>
+                    <field name="player1_score"/>
                     <field name="player2_name"/>
+                    <field name="player2_score"/>
                     <field name="player3_name"/>
+                    <field name="player3_score"/>
                     <field name="player4_name"/>
+                    <field name="player4_score"/>
                 </tree>
             </field>
         </record>
-        <menuitem id="play_room_menu" name="Play Room" action="play_room_view_act"
+        <menuitem id="play_room_menu" name="Play Room" action="play_room_view_act" groups="base.group_user"
                  sequence="1"/>
     </data>
 </odoo>

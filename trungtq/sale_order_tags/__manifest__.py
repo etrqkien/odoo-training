@@ -10,7 +10,7 @@
     'data': ['views/sale_order_tags_view.xml',
              'views/sale_orders_views.xml',
              'views/customize_search.xml',
-             'views/customer_id.xml',
+             'views/res_partner.xml',
              'wizards/tags_wizard.xml',
              'security/sale_order_tags_security.xml',
              'security/ir.model.access.csv',

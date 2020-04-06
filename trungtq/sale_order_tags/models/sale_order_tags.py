@@ -5,7 +5,7 @@ class SaleOrderTags(models.Model):
     _name = 'sale.order.tags'
     _rec_name = 'name'
     name = fields.Char(string='Tags')
-    name_count = fields.Integer(string='giao hàng', compute='count_tag_id')
+    name_count = fields.Integer(string='Số lượng đơn hàng', compute='count_tag_id')
 
     def check_order_tags(self):
         """hiện danh sách đơn hàng"""
@@ -13,7 +13,7 @@ class SaleOrderTags(models.Model):
         view_id_form = self.env.ref('sale.view_order_form').id
         return {
             'name': _('Danh sách đơn hàng'),
-            'domain': [('tag_ids', '=', self.name), ('state', '=', 'sale')],
+            'domain': [('tag_ids', '=', self.name)],
             'type': 'ir.actions.act_window',
             # 'view_type': 'form',
             'view_mode': 'tree,form',
@@ -25,5 +25,5 @@ class SaleOrderTags(models.Model):
     def count_tag_id(self):
         """ đếm số đơn hàng có gắn tag """
         count = self.env['sale.order'].search_count(
-            [('tag_ids', '=', self.name), ('state', '=', 'sale')])
+            [('tag_ids', '=', self.name)])
         self.name_count = count

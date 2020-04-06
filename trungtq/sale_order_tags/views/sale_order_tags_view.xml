@@ -41,6 +41,17 @@
                 </tree>
             </field>
         </record>
+         <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">Add Order</field>
+            <field name="model">sale.order.tags</field>
+            <field name="inherit_id" ref="sale_order_tags.sale_order_tags_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group/div/button[@name='check_order_tags']" position="after">
+                    <button name="%(sale_order_tags.button_2_wizard_action)d"
+                            string="Add Order" class="oe_highlight" type="action" icon="fa-tags"/>
+                </xpath>
+            </field>
+        </record>
     </data>
     <menuitem id="sale_order_tags"
               name=" Order Tags"

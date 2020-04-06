@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--thêm page Order Tag vào view sale order-->
+        <record id="sale_orders_views" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='other_information']" position="after">
+                    <page string="Order Tags">
+                        <group>
+                            <field name="tag_ids" widget="many2many_checkboxes" mode="tree">
+                                <tree string="Tags">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -12,45 +12,47 @@
             <field name="model">play.room</field>
             <field name="arch" type="xml">
                 <form string="Trận đấu">
-                    <button type="object" name="action_toggle_state_lock" string="Lock" icon="fa-lock" class="btn-primary" attrs="{'invisible': [('state_lock', '=', True)]}"/>
-                    <button type="object" name="action_toggle_state_lock" string="Unlock" icon="fa-unlock-alt" class="btn-primary" attrs="{'invisible':[('state_lock', '=', False)]}"/>
+                    <button type="object" name="action_toggle_state_lock" string="Lock" icon="fa-lock"
+                            class="btn-primary" attrs="{'invisible': [('state_lock', '=', True)]}"/>
+                    <button type="object" name="action_toggle_state_lock" string="Unlock" icon="fa-unlock-alt"
+                            class="btn-primary" attrs="{'invisible':[('state_lock', '=', False)]}"/>
                     <sheet>
                         <group>
                             <div>
                                 <group>
-                                    <field name="name" attrs="{'readonly': [('state_lock', '=', True)]}"/>
-                                    <field name="state_lock"/>
+                                    <field name="name"/>
+                                    <field name="state_lock" invisible="1"/>
                                 </group>
                             </div>
                             <div>
                                 <group>
-                                    <field name="player1_name" attrs="{'readonly': [('state_lock', '=', True)]}"/>
+                                    <field name="player1_name"/>
                                     <field name="player1_score"/>
                                 </group>
                                 <group>
-                                    <field name="player2_name" attrs="{'readonly': [('state_lock', '=', True)]}"/>
+                                    <field name="player2_name"/>
                                     <field name="player2_score"/>
                                 </group>
                                 <group>
-                                    <field name="player3_name" attrs="{'readonly': [('state_lock', '=', True)]}"/>
+                                    <field name="player3_name"/>
                                     <field name="player3_score"/>
                                 </group>
                                 <group>
-                                    <field name="player4_name" attrs="{'readonly': [('state_lock', '=', True)]}"/>
+                                    <field name="player4_name"/>
                                     <field name="player4_score"/>
                                 </group>
                             </div>
                         </group>
                         <notebook>
                             <page string="Detail Match">
-                                <field name="play_matchs" attrs = "{'readonly' : [('state_lock','=',True)]}">
+                                <field name="play_matchs" attrs="{'readonly' : [('state_lock','=',True)]}">
                                     <tree decoration-danger="check_point==False">
                                         <field name="round" style="width : 10%;"/>
                                         <field name="player1_score_match" style="width : 22,5%;"/>
                                         <field name="player2_score_match" style="width : 22,5%;"/>
                                         <field name="player3_score_match" style="width : 22,5%;"/>
-                                        <field name="player4_score_match" style="width : 22,5%;"/>
-                                        <field name="check_point"/>
+                                        <field name="player4_score_match" style="width : 22,5%;" force_save="1"/>
+                                        <field name="check_point" invisible="1"/>
                                     </tree>
                                 </field>
                             </page>

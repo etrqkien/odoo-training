@@ -27,10 +27,10 @@ class PlayRoom(models.Model):
             record.player3_score = 0
             record.player4_score = 0
             for rec in record.play_matchs:
-                record.player1_score += rec.player1_score_match
-                record.player2_score += rec.player2_score_match
-                record.player3_score += rec.player3_score_match
-                record.player4_score += rec.player4_score_match
+                record.player1_score += int(rec.player1_score_match)
+                record.player2_score += int(rec.player2_score_match)
+                record.player3_score += int(rec.player3_score_match)
+                record.player4_score += int(rec.player4_score_match)
 
     def action_toggle_state_lock(self):
         self.ensure_one()

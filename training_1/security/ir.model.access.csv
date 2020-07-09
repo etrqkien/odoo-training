@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_res_partner_template,access_res_partner_template,model_res_partner,base.group_user,1,1,1,1
+access_sale_order_tag_template,access_sale_order_tag_template,model_sale_order_tag,base.group_user,1,1,1,1
+access_e_sale_order_template,access_e_sale_order_template,model_sale_order,base.group_user,1,1,1,1
+access_e_test_report_template,access_e_test_report_template,model_test_report,base.group_user,1,1,1,1

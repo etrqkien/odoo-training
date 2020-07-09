@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!--Create action form-->
+        <record id="sale_order_tag_act" model="ir.actions.act_window">
+            <field name="name">Sale order tag</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.tag</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="sale_order_tag_tree" model="ir.ui.view">
+            <field name="name">Sale order tag</field>
+            <field name="model">sale.order.tag</field>
+            <field name="arch" type="xml">
+                <tree string="sale">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sale_order_tag_form" model="ir.ui.view">
+            <field name="name">sale order tag</field>
+            <field name="model">sale.order.tag</field>
+            <field name="arch" type="xml">
+                <form string="sale">
+                    <header>
+                        <button name="%(open_wizard_action)d" string="Select orders" type="action" class="oe_highlight"/>
+
+                    </header>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" name="action_view_mo_delivery" class="oe_stat_button" icon="fa-truck" groups="base.group_user">
+                            <field name="delivery_count" widget="statinfo" string="Picking"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+    <menuitem id="sales_order_tag"
+                name="Order tag"
+                parent="sale.menu_sale_config"
+                action="sale_order_tag_act"
+                sequence="5"/>
+</odoo>

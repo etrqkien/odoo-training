@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_test_report_wizard" model="ir.ui.view">
+        <field name="name">Test Report</field>
+        <field name="model">test.report</field>
+        <field name="arch" type="xml">
+            <form string="Choose The Details">
+                <group>
+                    <group>
+                        <field name="sale_order_ids" widget="many2many_tags"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="added" string="Pick" type="object" class="oe_highlight" />
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="open_wizard_action" model="ir.actions.act_window">
+        <field name="name">test report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">test.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_test_report_wizard"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

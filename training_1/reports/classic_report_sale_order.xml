@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <template id="report_invoice">
+            <t t-call="web.html_container">
+                <h2>Report title</h2>
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                    <p>This object's name is <span t-field="o.name"/></p>
+                </t>
+                </t>
+            </t>
+        </template>
+
+
+
+
+    </data>
+</odoo>
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="custom_report_sale_order_line"
+            string="print"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="training_1.report_invoice"
+            name="training_1.report_invoice"
+            paperformat="paperformat_entrust"
+            print_report_name="Print"
+        />
+
+
+    </data>
+</odoo>

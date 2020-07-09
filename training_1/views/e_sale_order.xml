@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="e_sale_order_view" model="ir.ui.view">
+        <field name="name">e sale order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet[1]/notebook[1]/page[3]" position="after">
+                <page string="Tags" name="tag_ids">
+                    <field name="tag_ids" widget="many2many_checkboxes"/>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+    <record id="e_view_sales_order_search" model="ir.ui.view">
+        <field name="name">e.sale.order.search.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='analytic_account_id']" position="after">
+                <field name="tag_ids"/>
+            </xpath>
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                <filter string="tag_ids" name="sale tag"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

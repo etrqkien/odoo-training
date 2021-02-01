@@ -11,45 +11,23 @@ class PlayWizard(models.TransientModel):
     player4_score = fields.Char()
     play_room_id = fields.Many2one('play.room', string='play_room_id',default=_default_head_branch)
 
-    @api.onchange('player4_score')
-    def _onchange_player4_score(self):
+    @api.onchange('player4_score','player3_score','player2_score','player1_score')
+    def _onchange_player_score(self):
+        try:
 
-        if self.player1_score == False and self.player2_score != False and self.player3_score != False and self.player4_score != False:
-            self.player1_score = 0 - (int(self.player2_score) + int(self.player3_score) + int(self.player4_score))
-        elif self.player2_score == False and self.player1_score != False and self.player3_score != False and self.player4_score != False:
-            self.player2_score = 0 - (int(self.player1_score) + int(self.player3_score) + int(self.player4_score))
-        elif self.player3_score == False and self.player2_score != False and self.player1_score != False and self.player4_score != False:
-            self.player3_score = 0 - (int(self.player1_score) + int(self.player2_score) + int(self.player4_score))
+            if self.player1_score == False and self.player2_score != False and self.player3_score != False and self.player4_score != False:
+                self.player1_score = 0 - (int(self.player2_score) + int(self.player3_score) + int(self.player4_score))
 
-    @api.onchange('player3_score')
-    def _onchange_player3_score(self):
+            elif self.player2_score == False and self.player1_score != False and self.player3_score != False and self.player4_score != False:
+                self.player2_score = 0 - (int(self.player1_score) + int(self.player3_score) + int(self.player4_score))
 
-        if self.player1_score == False and self.player2_score != False and self.player3_score != False and self.player4_score != False:
-            self.player1_score = 0 - (int(self.player2_score) + int(self.player3_score) + int(self.player4_score))
-        elif self.player2_score == False and self.player1_score != False and self.player3_score != False and self.player4_score != False:
-            self.player2_score = 0 - (int(self.player1_score) + int(self.player3_score) + int(self.player4_score))
-        elif self.player4_score == False and self.player2_score != False and self.player3_score != False and self.player1_score != False:
-            self.player4_score = 0 - (int(self.player1_score) + int(self.player2_score) + int(self.player3_score))
+            elif self.player3_score == False and self.player2_score != False and self.player1_score != False and self.player4_score != False:
+                self.player3_score = 0 - (int(self.player1_score) + int(self.player2_score) + int(self.player4_score))
 
-    @api.onchange('player2_score')
-    def _onchange_player2_score(self):
-
-        if self.player1_score == False and self.player2_score != False and self.player3_score != False and self.player4_score != False:
-            self.player1_score = 0 - (int(self.player2_score) + int(self.player3_score) + int(self.player4_score))
-        elif self.player3_score == False and self.player2_score != False and self.player1_score != False and self.player4_score != False:
-            self.player3_score = 0 - (int(self.player1_score) + int(self.player2_score) + int(self.player4_score))
-        elif self.player4_score == False and self.player2_score != False and self.player3_score != False and self.player1_score != False:
-            self.player4_score = 0 - (int(self.player1_score) + int(self.player2_score) + int(self.player3_score))
-
-    @api.onchange('player1_score')
-    def _onchange_player1_score(self):
-        if self.player3_score == False and self.player2_score != False and self.player1_score != False and self.player4_score != False:
-            self.player3_score = 0 - (int(self.player2_score) + int(self.player1_score) + int(self.player4_score))
-        elif self.player2_score == False and self.player1_score != False and self.player3_score != False and self.player4_score != False:
-            self.player2_score = 0 - (int(self.player1_score) + int(self.player3_score) + int(self.player4_score))
-        elif self.player4_score == False and self.player2_score != False and self.player3_score != False and self.player1_score != False:
-            self.player4_score = 0 - (int(self.player1_score) + int(self.player3_score) + int(self.player3_score))
-
+            elif self.player4_score == False and self.player2_score != False and self.player3_score != False and self.player1_score != False:
+                self.player4_score = 0 - (int(self.player1_score) + int(self.player2_score) + int(self.player3_score))
+        except ValueError:
+            raise UserError('bạn đang nhập chữ mời bạn nhâp số')
     def multi_update(self):
         if int(self.player1_score) + int(self.player2_score) + int(self.player3_score) + int(self.player4_score) != 0:
             raise ValidationError("mời bạn nhập lại kết quả" )

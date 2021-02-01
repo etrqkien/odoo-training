@@ -29,14 +29,17 @@ class PlayWizard(models.TransientModel):
         except ValueError:
             raise UserError('bạn đang nhập chữ mời bạn nhâp số')
     def multi_update(self):
-        if int(self.player1_score) + int(self.player2_score) + int(self.player3_score) + int(self.player4_score) != 0:
-            raise ValidationError("mời bạn nhập lại kết quả" )
-        else:
-            vals = {
-                'player1_score': int(self.player1_score),
-                'player2_score': int(self.player2_score),
-                'player3_score': int(self.player3_score),
-                'player4_score': int(self.player4_score),
-                'play_room_id' : self.play_room_id.id
-            }
-            self.env['play.match'].create(vals)
+        try:
+            if int(self.player1_score) + int(self.player2_score) + int(self.player3_score) + int(self.player4_score) != 0:
+                raise ValidationError("mời bạn nhập lại kết quả" )
+            else:
+                vals = {
+                    'player1_score': int(self.player1_score),
+                    'player2_score': int(self.player2_score),
+                    'player3_score': int(self.player3_score),
+                    'player4_score': int(self.player4_score),
+                    'play_room_id' : self.play_room_id.id
+                }
+                self.env['play.match'].create(vals)
+        except  ValueError:
+            raise UserError('bạn đang nhập chữ mời bạn nhâp số')

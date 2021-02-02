@@ -10,7 +10,12 @@ class PlayWizard(models.TransientModel):
     player3_score = fields.Char()
     player4_score = fields.Char()
     play_room_id = fields.Many2one('play.room', string='play_room_id',default=_default_head_branch)
-    
+    player1_name = fields.Char(related="play_room_id.player1_name")
+    player2_name = fields.Char(related="play_room_id.player2_name")
+    player3_name = fields.Char(related="play_room_id.player3_name")
+    player4_name = fields.Char(related="play_room_id.player4_name")
+
+
     @api.onchange('player4_score','player3_score','player2_score','player1_score')
     def _onchange_player_score(self):
         try:

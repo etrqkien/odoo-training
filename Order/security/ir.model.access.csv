@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_x_details_order,access_x_details_order,model_x_details_order,base.group_user,1,1,1,1
+access_x_order,access_x_order,model_x_order,base.group_user,1,1,1,1

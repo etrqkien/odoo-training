@@ -6,6 +6,9 @@
             <field name="model">sale.order.tag</field>
             <field name="arch" type="xml">
                 <form string="Sale Order Tag">
+                    <header>
+                        <button name="clear_tag" string="Xóa tag" type="object"  class="oe_highlight"/>
+                    </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
                             <button name="open_parent" type="object"

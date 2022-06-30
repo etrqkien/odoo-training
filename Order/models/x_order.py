@@ -7,6 +7,7 @@ class XOrder(models.Model):
     _description = 'x order'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    name = fields.Char('Tên đơn hàng')
     date_order = fields.Date('Ngày đặt', default=datetime.today())
     linkMenu = fields.Html('Link Menu')
     shippingFee = fields.Float('Phí Ship')
@@ -18,6 +19,7 @@ class XOrder(models.Model):
     amount_change = fields.Float('Số tiền được giảm/chịu thêm', compute='_compute_amount_change')
     payer_id = fields.Many2one('res.partner', string='Người thanh toán')
     details = fields.One2many('x.details.order', 'order', string='Chi tiết')
+    input_stk = fields.Char('Số tài khoản thanh toán')
 
     @api.depends('shippingFee', 'surcharge', 'discount')
     def _compute_amount_change(self):

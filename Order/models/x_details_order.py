@@ -14,6 +14,7 @@ class XDetailsOrder(models.Model):
     payer_id = fields.Many2one('res.partner', string='Người thanh toán', related='order.payer_id')
     payed = fields.Boolean('Đã thanh toán', default=False)
     payments = fields.Selection(selection=[('cash', 'Thanh toán tiền mặt'), ('bank', 'Thanh toán chuyển khoản'), ('ewallet', 'Ví điện tử')], string='Hình thức thanh toán ')
+    date_order = fields.Date('Ngày đặt', related='order.date_order', store=True)
     order = fields.Many2one('x.order')
 
 

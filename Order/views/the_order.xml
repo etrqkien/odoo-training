@@ -6,6 +6,8 @@
             <field name="model">x.order</field>
             <field name="arch" type="xml">
                 <tree string="Orders" default_order="create_date desc">
+                    <field name="name"/>
+                    <field name="payer_id"/>
                     <field name="date_order"/>
                 </tree>
             </field>
@@ -16,25 +18,29 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-<!--                        <group>-->
-<!--                            <group><field name="date_order"/></group>-->
-<!--                            <group><field name="linkMenu"/></group>-->
-<!--                        </group>-->
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+
                         <group>
                             <group>
                                 <field name="date_order"/>
-<!--                                <field name="amountPP"/>-->
+                                <field name="to_pay" widget="monetary"/>
                                 <field name="discount" widget="monetary"/>
                                 <field name="shippingFee" widget="monetary"/>
                                 <field name="surcharge" widget="monetary"/>
+                                <field name="currency_id"/>
                             </group>
 
                             <group>
-                                <field name="linkMenu" widget="url" />
+                                <field name="shop_id"/>
+                                <field name="linkMenu" widget="url"/>
                                 <field name="devide_type"/>
                                 <field name="amount_change" widget="monetary"/>
                                 <field name="payer_id"/>
-<!--                                <field name="x_total"/>-->
                             </group>
                         </group>
                         <notebook>
@@ -42,16 +48,14 @@
                                 <field name="details">
                                     <tree string="Tính tiền" editable="bottom">
                                         <field name="partner_id"/>
-                                        <field name="product_id"/>
+                                        <field name="dish_id"/>
+                                        <field name="product_id" invisible="1"/>
                                         <field name="amount"/>
                                         <field name="price"/>
-<!--                                        <field name="price_total"/>-->
-<!--                                        <field name="amount_change_id"/>-->
                                         <field name="amount_residual"/>
-<!--                                        <field name="amount_residual"/>-->
-<!--                                        <field name="payer_id"/>-->
                                         <field name="payed"/>
                                         <field name="payments"/>
+                                        <field name="currency_id" invisible="1"/>
                                     </tree>
                                 </field>
                             </page>
@@ -70,18 +74,38 @@
             <field name="name">x_details_order_tree_view</field>
             <field name="model">x.details.order</field>
             <field name="arch" type="xml">
-                <tree string="Details Orders" default_order="create_date desc" create="0">
+                <tree string="Details Orders" default_order="create_date desc" create="0" multi_edit="1">
+                    <field name="order"/>
                     <field name="partner_id"/>
-                    <field name="product_id"/>
-                    <field name="amount"/>
-<!--                    <field name="price" widget="monetary"/>-->
-<!--                    <field name="price_total" widget="monetary"/>-->
-<!--                    <field name="amount_change_id"/>-->
+                    <field name="dish_id"/>
+                    <field name="product_id" invisible="1"/>
+                    <field name="amount" widget="monetary"/>
                     <field name="amount_residual" sum="Practical Amount" widget="monetary"/>
                     <field name="payer_id"/>
                     <field name="payed"/>
                     <field name="payments"/>
+                    <field name="currency_id" invisible="1"/>
                 </tree>
+            </field>
+        </record>
+
+        <record id="x_details_order_search_view" model="ir.ui.view">
+            <field name="name">x_details_order_search_view</field>
+            <field name="model">x.details.order</field>
+            <field name="arch" type="xml">
+                <search string="Details Orders">
+                    <field name="order"/>
+                    <field name="partner_id"/>
+                    <field name="dish_id"/>
+                    <field name="payer_id"/>
+                    <separator/>
+                    <filter string="Chưa thanh toán" name="not_payed" domain="[('payed', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Người đặt" name="groupby_partner_id" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Người thanh toán" name="groupby_payer_id" domain="[]" context="{'group_by':'payer_id'}"/>
+                        <filter string="Đơn hàng" name="groupby_order" domain="[]" context="{'group_by':'order'}"/>
+                    </group>
+                </search>
             </field>
         </record>
 
@@ -100,21 +124,21 @@
         </record>
 
         <menuitem id="menu_order_root"
-            name="Order"
-            sequence="5"
-            groups="base.group_user"/>
+                  name="Order"
+                  sequence="5"
+                  groups="base.group_user"/>
         <menuitem id="menu_details_order"
-            name="Details Order"
-            action="action_x_details_order"
-            parent="menu_order_root"
-            sequence="10"
-            groups="base.group_user"/>
+                  name="Details Order"
+                  action="action_x_details_order"
+                  parent="menu_order_root"
+                  sequence="10"
+                  groups="base.group_user"/>
         <menuitem id="menu_order"
-            name="Order"
-            action="action_x_order"
-            parent="menu_order_root"
-            sequence="10"
-            groups="base.group_user"/>
+                  name="Order"
+                  action="action_x_order"
+                  parent="menu_order_root"
+                  sequence="10"
+                  groups="base.group_user"/>
 
 
     </data>

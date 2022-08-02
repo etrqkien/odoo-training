@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">res.sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[3]" position="after">
+                <page string="Tags" name="order_tag_ids">
+                    <group>
+                        <field name="order_tag_ids" widget="many2many_checkboxes"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+<!--    add search for tag-->
+    <record id="view_sales_order_filter_tags_inherit" model="ir.ui.view">
+        <field name="name">sale.order.list.select.tags</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="priority" eval="15"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']" position="after">
+                <field name="order_tag_ids" string="Tags"/>
+                <filter string="Hastag"
+                    name="hastag"
+                    domain="[('order_tag_ids','=','Tag 1')]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

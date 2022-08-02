@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="order_list_paperformat_euro" model="report.paperformat">
+        <field name="name">European A5 low margin</field>
+        <field name="default" eval="True"/>
+        <field name="format">A5</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <record id="order_list_print_badge" model="ir.actions.report">
+        <field name="name">In phiếu tên</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">thuytrinh.print_order_list</field>
+        <field name="report_file">thuytrinh.print_order_list</field>
+        <field name="print_report_name"> </field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="paperformat_id" ref="order_list_paperformat_euro"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="print_order_list">
+        <t t-call="web.html_container">
+        <t t-call="web.basic_layout">
+            <style>
+                h1 {
+                    text-align: center;
+                }
+                table {
+                    border: 2px;
+                    cell-padding: 5px;
+                    cell-spacing: 5px;
+                    border-color: gray;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            </style>
+            <div class="page">
+                <h1> Order List </h1>
+            </div>
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <th><strong>Name</strong></th>
+                        <th><strong>Salesperson</strong></th>
+                        <th><strong>Currency</strong></th>
+                        <th><strong>Currency Rate</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="docs" t-as="doc">
+                        <td><span  t-field="doc.name"/></td>
+                        <td><span t-field="doc.user_id"/></td>
+                        <td><span t-field="doc.currency_id"/></td>
+                        <td><span t-field="doc.currency_rate"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </t>
+        </t>
+    </template>
+</odoo>

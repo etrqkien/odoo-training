@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    add form view-->
+    <record id="ghi_diem_view_form" model="ir.ui.view">
+        <field name="name">Ghi Điểm Form</field>
+        <field name="model">player</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="date"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="player_1"/>
+                            <field name="player_2"/>
+                            <field name="player_3"/>
+                            <field name="player_4"/>
+                        </group>
+
+                        <group>
+                            <field name="points_1"/>
+                            <field name="points_2"/>
+                            <field name="points_3"/>
+                            <field name="points_4"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Ghi điểm">
+                            <field name="player_point_ids">
+                                <tree create="1" delete="1" editable="bottom">
+                                    <field name="rotation"/>
+
+                                    <field name="player_1"/>
+                                    <field name="points_1"/>
+
+                                    <field name="player_2"/>
+                                    <field name="points_2"/>
+
+                                    <field name="player_3"/>
+                                    <field name="points_3"/>
+
+                                    <field name="player_4"/>
+                                    <field name="points_4"/>
+
+                                    <field name="sum"/>
+                                    <field name="player_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    add tree view-->
+    <record id="ghi_diem_view_tree" model="ir.ui.view">
+        <field name="name">Ghi Điểm List</field>
+        <field name="model">player</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="state" invisible="1"/>
+                <field name="date"/>
+                <field name="player_1"/>
+                <field name="player_2"/>
+                <field name="player_3"/>
+                <field name="player_4"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="points_total_cron" model="ir.cron">
+        <field name="name">Xác nhận điểm</field>
+        <field name="model_id" ref="model_player"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_update_auto_state_record()</field>  <!-- gọi vào hàm trong model-->
+        <field name="interval_number">1</field>    <!--thời gian gọi lại-->
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>    <!--số lần gọi-->
+        <field name="nextcall" eval="(DateTime.now().replace(hour=16, minute=59) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="active" eval="True"/>
+        <field name="doall" eval="False"/>
+    </record>
+
+    <!--    add schedule-->
+    <record id="total_record_cron" model="ir.cron">
+        <field name="name">Tổng điểm</field>
+        <field name="model_id" ref="model_player"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_update_auto_point_total()</field>  <!-- gọi vào hàm trong model-->
+        <field name="interval_number">1</field>    <!--thời gian gọi lại-->
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>    <!--số lần gọi-->
+        <field name="nextcall" eval="(DateTime.now().replace(hour=16, minute=59) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="active" eval="True"/>
+        <field name="doall" eval="False"/>
+    </record>
+
+<!--    add action-->
+    <record id="action_point_review" model="ir.actions.server">
+        <field name="name">Duyệt điểm</field>
+        <field name="model_id" ref="model_player"/>
+        <field name="binding_model_id" ref="model_player"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_update_auto_state_record()</field>
+        <field name="type">ir.actions.server</field>
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+    <!--    add the action-->
+    <record id='ghi_diem_hang_ngay_action' model='ir.actions.act_window'>
+        <field name="name">Ghi điểm hàng ngày</field>
+        <field name="res_model">player</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--    add the menu item-->
+    <menuitem name="Ghi điểm" id="ghi_diem_base_menu" />
+    <menuitem name="Ghi điểm" id="ghi_diem_menu" parent="ghi_diem_base_menu" />
+    <menuitem name="Ghi điểm hàng ngày" id="ghi_diem_hang_ngay_menu" parent="ghi_diem_menu" action="ghi_diem_hang_ngay_action" />
+</odoo>
+

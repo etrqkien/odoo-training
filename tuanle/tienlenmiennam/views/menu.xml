@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="match_list_act">
+            <field name="name">Match</field>
+            <field name="res_model">play.match</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="room_list_act">
+            <field name="name">Room</field>
+            <field name="res_model">play.room</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Match" id="menu_room"/>
+        <menuitem name="Room" id="menu_room1"/>
+
+
+        <menuitem name="Match" id="menu_1_list1" parent="menu_room" action="match_list_act"/>
+        <menuitem name="Room" id="menu_2_list2" parent="menu_room1" action="room_list_act"/>
+    </data>
+</odoo>

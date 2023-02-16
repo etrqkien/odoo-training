@@ -16,6 +16,7 @@ class PlayRoom(models.Model):
     player4_name = fields.Char(string='Player 4')
     player4_score = fields.Integer(string='Total score Player 4', compute='_compute_score_player')
     play_matchs = fields.One2many(comodel_name='play.match', inverse_name='play_zoom_id', string='Match')
+    state_lock = fields.Boolean(default=False)
 
     @api.depends('play_matchs.player1_score_match', 'play_matchs.player2_score_match',
                  'play_matchs.player3_score_match', 'play_matchs.player4_score_match')
@@ -26,7 +27,12 @@ class PlayRoom(models.Model):
             record.player3_score = 0
             record.player4_score = 0
             for rec in record.play_matchs:
-                record.player1_score += rec.player1_score_match
-                record.player2_score += rec.player2_score_match
-                record.player3_score += rec.player3_score_match
-                record.player4_score += rec.player4_score_match
+                record.player1_score += int(rec.player1_score_match)
+                record.player2_score += int(rec.player2_score_match)
+                record.player3_score += int(rec.player3_score_match)
+                record.player4_score += int(rec.player4_score_match)
+
+    def action_toggle_state_lock(self):
+        self.ensure_one()
+        self.state_lock = not self.state_lock
+        return True

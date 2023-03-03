@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id ='ct_dat_hang_action' model='ir.actions.act_window'>
+            <field name="name">Chi tiết đơn hàng</field>
+            <field name="res_model">ct.dat.hang</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+    <record id ='don_dat_hang_action' model='ir.actions.act_window'>
+            <field name="name">Đơn hàng</field>
+            <field name="res_model">don.dat.hang</field>
+            <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <menuitem name="Đặt đồ ăn" id="dat_do_an_id"/>
+    <menuitem name="Đơn đặt hàng" id="don_dat_hang" parent="dat_do_an_id" action="don_dat_hang_action"/>
+    <menuitem name="Chi tiết đơn hàng" id="chi_tiet_don_hang" parent="dat_do_an_id" action="ct_dat_hang_action"/>
+
+
+    <record id="don_dat_hang_form_view" model="ir.ui.view">
+        <field name="name">Đơn đặt hàng</field>
+        <field name="model">don.dat.hang</field>
+        <field name="arch" type="xml">
+            <form class="o_lead_opportunity_form" js_class="crm_form">
+                <sheet>
+                        <group colspan="2">
+                            <group>
+                                <field name="name"/>
+                                <field name="date_order"/>
+                                <field name="thanh_tien" widget="monetary"/>
+                                <field name="discount" widget="monetary"/>
+                                <field name="phi_ship" widget="monetary"/>
+                                <field name="surcharge" widget="monetary"/>
+                                <field name="currency_id" groups="base.group_multi_currency"/>
+                                <field name="qr_pay" style="width: 20%" class="oe_avatar" widget="image"/>
+                            </group>
+                            <group>
+                                <field name="shop_id"/>
+                                <field name="link_menu"/>
+                                <field name="type_discount"/>
+                                <field name="pay_more" widget="monetary"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="ct_dat_hang" string="Chi tiết">
+                                <field name="ct_dat_hang_ids">
+                                    <tree string="Tính tiền" editable="bottom">
+                                        <field name="partner_id"/>
+                                        <field name="dish_id"/>
+                                        <field name="so_luong"/>
+                                        <field name="price"/>
+                                        <field name="amount_residual"/>
+                                        <field name="da_thanh_toan"/>
+                                        <field name="payment"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="don_dat_hang_kanban_view" model="ir.ui.view">
+        <field name="name">Đơn đặt hàng</field>
+        <field name="model">don.dat.hang</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class = "oe_kanban_global_click">
+                            <div class="o_kanban_image d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('don.dat.hang','qr_pay', record.id.raw_value, placeholder)}')">
+                            </div>
+                            <div class="oe_kanban_details d-flex flex-clolumn">
+                                <ul>
+                                    <li>Date order:-<field name="date_order"/></li>
+                                    <li>Name:-<field name="name"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+
+        </field>
+    </record>
+    <record id="don_dat_hang_tree_view" model="ir.ui.view">
+        <field name="name"> Đặt hàng</field>
+        <field name="model">don.dat.hang</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="phi_ship"/>
+                <field name="discount"/>
+                <field name="surcharge"/>
+                <field name="thanh_tien"/>
+                <field name="type_discount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ct_dat_hang_tree_view" model="ir.ui.view">
+        <field name="name">Chi tiết đặt hàng</field>
+        <field name="model">ct.dat.hang</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="order"/>
+                <field name="dish_id"/>
+                <field name="so_luong"/>
+                <field name="price"/>
+                <field name="da_thanh_toan"/>
+                <field name="payment"/>
+            </tree>
+        </field>
+    </record>
+    <record id="ct_don_dat_hang_form_view" model="ir.ui.view">
+        <field name="name">Chi tiết đặt hàng</field>
+        <field name="model">ct.dat.hang</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="link_menu"/>
+                    <field name="order"/>
+                    <field name="dish_id"/>
+                    <field name="so_luong"/>
+                    <field name="price"/>
+                    <field name="da_thanh_toan"/>
+                    <field name="payment"/>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="ct_dat_hang_search_view" model="ir.ui.view">
+        <field name="name">ct_dat_hang_search</field>
+        <field name="model">ct.dat.hang</field>
+        <field name="arch" type="xml">
+            <search string="Details order">
+                <field name="order"/>
+                <field name="dish_id"/>
+                <field name="nguoi_thanh_toan"/>
+                <separator/>
+                <filter string="Chưa thanh toán" name="not_payer" domain="[('da_thanh_toan','=',False)]"/>
+                <group expand="0" string="group by">
+                    <filter string="Người đặt" name="groupby_partner_id" domain="[]" context="{'group_by':'partner_id'}"/>
+                    <filter string="Người thanh toán" name="groupby_thanh_toan" domain="[]" context="{'group_by':'nguoi_thanh_toan'}"/>
+                    <filter string="Đơn hàng" name="groupby_order" domain="[]" context="{'group_by':'order'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

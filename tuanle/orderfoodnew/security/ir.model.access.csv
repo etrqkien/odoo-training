@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acl_ct_dat_hang_access,ctdathang access,model_ct_dat_hang,,1,1,1,1
+acl_don_dat_hang_access,dondathang access,model_don_dat_hang,,1,1,1,1
+access_x_dish,access_x_dish,model_x_dish,,1,1,1,1
+access_x_shop,access_x_shop,model_x_shop,,1,1,1,1

@@ -7,5 +7,5 @@
         'views/menu.xml',
         'security/ir.model.access.csv'
     ]
-
 }
+

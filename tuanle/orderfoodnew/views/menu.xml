@@ -3,7 +3,7 @@
     <menuitem name="Đặt đồ ăn" id="dat_do_an_id"/>
     <menuitem name="Đơn đặt hàng" id="don_dat_hang" parent="dat_do_an_id" action="don_dat_hang_action"/>
     <menuitem name="Chi tiết đơn hàng" id="chi_tiet_don_hang" parent="dat_do_an_id" action="ct_dat_hang_action"/>
-    
+
 </odoo>
 
 

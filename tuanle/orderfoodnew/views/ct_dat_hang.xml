@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id ='ct_dat_hang_action' model='ir.actions.act_window'>
+            <field name="name">Chi tiết đơn hàng</field>
+            <field name="res_model">ct.dat.hang</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="ct_dat_hang_tree_view" model="ir.ui.view">
+        <field name="name">Chi tiết đặt hàng</field>
+        <field name="model">ct.dat.hang</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="order"/>
+                <field name="dish_id"/>
+                <field name="so_luong"/>
+                <field name="price"/>
+                <field name="da_thanh_toan"/>
+                <field name="payment"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ct_dat_hang_search_view" model="ir.ui.view">
+        <field name="name">ct_dat_hang_search</field>
+        <field name="model">ct.dat.hang</field>
+        <field name="arch" type="xml">
+            <search string="Details order">
+                <field name="order"/>
+                <field name="dish_id"/>
+                <field name="nguoi_thanh_toan"/>
+                <separator/>
+                <filter string="Chưa thanh toán" name="not_payer" domain="[('da_thanh_toan','=',False)]"/>
+                <group expand="0" string="group by">
+                    <filter string="Người đặt" name="groupby_partner_id" domain="[]" context="{'group_by':'partner_id'}"/>
+                    <filter string="Người thanh toán" name="groupby_thanh_toan" domain="[]" context="{'group_by':'nguoi_thanh_toan'}"/>
+                    <filter string="Đơn hàng" name="groupby_order" domain="[]" context="{'group_by':'order'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

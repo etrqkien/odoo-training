@@ -42,5 +42,3 @@ class DonDatHang(models.Model):
     shop_id = fields.Many2one('x.shop',string='Quán ăn')
     qr_pay = fields.Binary(string='QR code')
     link_menu = fields.Html(sting='Link menu')
-
-

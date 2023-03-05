@@ -6,7 +6,3 @@ class XDish(models.Model):
 
     name = fields.Char(string='Tên')
     price = fields.Float(string='Đơn giá', default=0)
-
-
-
-

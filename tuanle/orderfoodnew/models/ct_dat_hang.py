@@ -33,4 +33,3 @@ class ChiTietDatHang(models.Model):
                 rec.amount_change_id = round(rec.order.pay_more / rec.order.amountPP) if rec.order.amountPP else 0
                 # chỉ thực hiện nếu rec.order.amountPP khác 0 còn không thì bằn else
                 rec.amount_residual = round(rec.price_total + rec.amount_change_id, -3)
-

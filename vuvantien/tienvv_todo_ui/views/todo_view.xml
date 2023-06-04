@@ -2,7 +2,7 @@
 <odoo>
 
     <data>
-
+<!--hành động cửa sổ được khai báo trong model . view_mode: kiểu xem và thứ tự xuất hiện-->
         <act_window id="action_todo_task_button"
                     name="To-Do Tasks"
                     res_model="todo.task"
@@ -17,6 +17,7 @@
 
                 <form>
                     <header>
+                        <!--nút Toggle Done ở đầu giao diện-->
                         <field name="state" invisible="True"/>
                         <button name="do_toggle_done" type="object"
                                 string="Toggle Done" class="oe_highlight"
@@ -28,6 +29,7 @@
 
                     <sheet>
                         <!-- Title -->
+                        <!--tiêu đề hiển thị bên trên góc trái giao diện form tasks-->
                         <div class="oe_title">
                             <label for="name" class="oe_edit_only"/>
                             <h1>
@@ -41,6 +43,7 @@
                         </div>
 
                         <!-- Smart buttons -->
+                        <!--nút User to_dos hiển thị bên góc trên bên phải form tasks-->
                         <div name="buttons" class="oe_right oe_button_box">
                             <button class="oe_stat_button"
                                     type="action" icon="fa-tasks"
@@ -54,6 +57,8 @@
                         </div>
 
                         <!-- Details -->
+                        <!--bố cục giao diện form tasks-->
+                        <!--<separator string="References"/> làm nổi bật text References-->
                         <group name="top_group">
                             <group name="left_group">
                                 <field name="date_deadline"/>
@@ -77,6 +82,7 @@
 
 
         <!-- To-Do Task List view -->
+        <!--trình trang trí decoration-->
         <record id="tienvv_todo_user.view_tree_todo_task" model="ir.ui.view">
             <field name="model">todo.task</field>
             <field name="arch" type="xml">
@@ -93,29 +99,36 @@
         </record>
 
 
+
+        <!--filter_domain đặt biểu thức miền cụ thể để sử dụng cho tìm kiếm, cung cấp một biểu thức linh hoạt-->
+                    <!--thay thế cho thuộc tính toán tử-->
+                    <!--filter: một bộ lọc là một chuyển đổi được xác định trước trong chế độ xem tìm kiếm,-->
+                    <!--nó chỉ có thể được bật hoặc tắt.-->
+                    <!--Mục đích chính của nó là thêm dữ liệu vào ngữ cảnh tìm kiếm hoặc nối các phần mới vào bộ lọc tìm kiếm.-->
+                    <!--domain : là 1 miền trong odoo-->
+                    <!--context :một từ điển Python, được hợp nhất vào miền của hành động để tạo miền tìm kiếm-->
+					<!--separator phân tách các nhóm bộ lọc trong chế độ xem tìm kiếm đơn giản-->
         <record id="tienvv_todo_user.view_filter_todo_task"
                 model="ir.ui.view">
             <field name="model">todo.task</field>
             <field name="arch" type="xml">
-
                 <search>
                     <field name="name"/>
                     <field name="user_id"/>
-
                     <filter name="filter_not_done" string="Not Done"
                             domain="[('is_done','=',False)]"/>
                     <filter name="filter_done" string="Done"
                             domain="[('is_done','!=',False)]"/>
-
                     <separator/>
                     <filter name="group_user" string="By User"
                             context="{'group_by': 'user_id'}"/>
                 </search>
-
             </field>
         </record>
 
 
+
+ <!--phần này đúng như tài liệu nhưng khi không comment "display="[name], Stage[stage_id]" lại thì nó die luôn-->
         <record id="view_calendar_todo_task" model="ir.ui.view">
             <field name="model">todo.task</field>
             <field name="arch" type="xml">
@@ -127,11 +140,23 @@
                     <field name="name"/>
                     <field name="stage_id"/>
                 </calendar>
-
             </field>
         </record>
 
 
+
+        <!--type: một trong bar(mặc định) pie và line loại biểu đồ sẽ sử dụng-->
+        <!--stacked: chỉ được sử dụng cho các barbiểu đồ. Nếu có mặt và được đặt thành True, xếp các thanh trong một nhóm-->
+        <!--Phần tử được phép duy nhất trong chế độ xem biểu đồ fieldcó thể có các thuộc tính sau:-->
+        <!--name: tên của một trường để sử dụng trong chế độ xem biểu đồ. Nếu được sử dụng để nhóm (thay vì tổng hợp)-->
+        <!--type:cho biết liệu trường nên được sử dụng làm tiêu chí nhóm hay làm giá trị tổng hợp trong một nhóm. Các giá trị có-->
+        <!--thể là:-->
+        <!--row: các nhóm theo lĩnh vực được chỉ định. Tất cả các loại biểu đồ hỗ trợ ít nhất một cấp độ nhóm, một số có thể hỗ-->
+        <!--trợ nhiều hơn. Đối với chế độ xem trục, mỗi nhóm có hàng riêng.-->
+        <!--col:chỉ được sử dụng bởi các bảng trụ, tạo các nhóm theo cột-->
+        <!--measure:lĩnh vực để tổng hợp trong một nhóm-->
+        <!--interval:vào ngày và datetime lĩnh vực, nhóm theo các thời điểm cụ thể ( day, week, month, quarterhoặc year) thay vì nhóm-->
+        <!--trên datetime cụ thể (độ phân giải cố định thứ hai) hoặc ngày (độ phân giải ngày cố định).-->
         <record id="view_graph_todo_task" model="ir.ui.view">
             <field name="model">todo.task</field>
             <field name="arch" type="xml">
@@ -144,7 +169,14 @@
             </field>
         </record>
 
-
+<!--Chế độ xem trục được sử dụng để trực quan hóa các tập hợp dưới dạng bảng trụ . Phần tử gốc của nó là<pivot>có-->
+        <!--thể lấy các thuộc tính sau:-->
+        <!--Đặt thành Trueđể loại bỏ các liên kết của ô bảng để xem danh sách.-->
+        <!--display_quantity-->
+        <!--Đặt thành true hiển thị cột Số lượng theo mặc định.-->
+        <!--Các yếu tố được phép trong chế độ xem trục giống như đối với chế độ xem biểu đồ.-->
+        <!--Trong chế độ xem Pivot, fieldmột widgetthuộc tính có thể ra lệnh cho định dạng của nó. Các widget phải là một-->
+        <!--định dạng lĩnh vực, trong đó thú vị nhất là date, datetime, float_time, và monetary.-->
         <record id="view_pivot_todo_task" model="ir.ui.view">
             <field name="model">todo.task</field>
             <field name="arch" type="xml">

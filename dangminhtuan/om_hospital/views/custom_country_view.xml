@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- District -->
+        <record id="view_country_district_tree" model="ir.ui.view">
+            <field name="name">res.country.state.district.tree</field>
+            <field name="model">res.country.state.district</field>
+            <field name="arch" type="xml">
+                <tree string="District" editable="bottom">
+                    <field name="name"/>
+                    <field name="code"/>
+<!--                    <field name="country_id" options="{'no_create': True, 'no_open': True}"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_country_district_form" model="ir.ui.view">
+            <field name="name">res.country.state.district.form</field>
+            <field name="model">res.country.state.district</field>
+            <field name="arch" type="xml">
+                <form string="District">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+<!--                            <field name="country_id" options='{"no_open": True, "no_create": True}'/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_country_district_search" model="ir.ui.view">
+            <field name="name">res.country.state.district.search</field>
+            <field name="model">res.country.state.district</field>
+            <field name="arch" type="xml">
+                <search string="district">
+                    <field name="name"/>
+<!--                    <field name="country_id"/>-->
+                    <group string="Group By">
+<!--                        <filter name="groupby_country" string="Country" context="{'group_by': 'country_id'}"/>-->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_country_district" model="ir.actions.act_window">
+            <field name="name">Districts</field>
+            <field name="res_model">res.country.state.district</field>
+            <field name="view_id" ref="view_country_district_tree"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a District
+                </p><p>
+                    Federal District belong to countries and are part of your contacts' addresses.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_localisation" name="Localization"
+        parent="patient_tag_master_menu" sequence="5"/>
+
+    <menuitem id="base.menu_country_partner"
+        action="base.action_country" parent="menu_localisation"
+        sequence="1"/>
+
+
+
+    <menuitem id="base.menu_country_state_partner"
+        action="base.action_country_state"
+        parent="menu_localisation"
+        sequence="2"/>
+
+    <menuitem id="menu_country_district_partner"
+        action="action_country_district"
+        parent="menu_localisation"
+        sequence="3"/>
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<odoo>
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+<!--            <field name="vat" position="after">-->
+<!--                <field name="x_identity_card" placeholder="Nhập chứng minh thư"/>-->
+<!--            </field>-->
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="x_identity_card" placeholder="Nhập chứng minh thư"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_customer_form" model="ir.actions.act_window">
+        <field name="name">Customer Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="customer_menu"
+              name="Customer"
+              action="action_customer_form"
+              parent="customer_master_menu"
+              sequence="0"
+    />
+</odoo>

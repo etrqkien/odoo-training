@@ -6,3 +6,4 @@ access.patient.tag.lines,access_patient_tag,om_hospital.model_patient_tag,base.g
 access.cancel.appointment.wizard.lines,access_cancel_appointment_wizard,om_hospital.model_cancel_appointment_wizard,base.group_user,1,1,1,1
 access.cancel.odoo.playground,access_odoo_playground,om_hospital.model_odoo_playground,base.group_user,1,1,1,1
 access.cancel.res.country.state.district,access_res_country_state_district,om_hospital.model_res_country_state_district,base.group_user,1,1,1,1
+access.sale.order,access_sale_order,om_hospital.model_sale_order,base.group_user,1,1,1,1

@@ -12,13 +12,13 @@
     'description': """
 Hospital management system
     """,
-    'depends': ['mail', 'product', 'base'],
+    'depends': ['mail', 'product', 'base', 'sale'],
     'data': [
         'security/ir.model.access.csv',
         'data/sequence_data.xml',
         'views/menu.xml',
         'report/report_order_names.xml',
-        'views/report_templates.xml',
+        'report/report_templates.xml',
         'data/paperformat_data.xml',
         'views/patient_view.xml',
         'views/patient_tag_view.xml',
@@ -28,6 +28,7 @@ Hospital management system
         'views/custom_country_view.xml',
         'views/odoo_playground_view.xml',
         'views/customer_view.xml',
+        'views/order_view.xml',
     ],
     'demo': [],
     'installable': True,

@@ -44,6 +44,15 @@
                                 </tree>
                             </field>
                         </page>
+                        <page string="Orders">
+                            <field name="sale_order_ids">
+                            <tree string="Sale Orders">
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="date_order"/>
+                            </tree>
+                        </field>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

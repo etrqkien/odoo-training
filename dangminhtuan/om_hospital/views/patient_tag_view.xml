@@ -1,0 +1,60 @@
+<odoo>
+    <!-- Action mở view tree của patient.tag -->
+    <record id="action_patient_tag_tree" model="ir.actions.act_window">
+        <field name="name">Patient Tags</field>
+        <field name="res_model">patient.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_hospital_patient_tag_tree"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first patient tag
+            </p>
+        </field>
+    </record>
+
+    <!-- Định nghĩa view tree và form của patient.tag -->
+    <record id="view_hospital_patient_tag_tree" model="ir.ui.view">
+        <field name="name">patient.tag.tree</field>
+        <field name="model">patient.tag</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hospital_patient_tag_form" model="ir.ui.view">
+        <field name="name">patient.tag.form</field>
+        <field name="model">patient.tag</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Orders">
+                            <field name="sale_order_ids">
+                                <tree string="Sale Orders">
+                                    <field name="name"/>
+                                    <field name="partner_id"/>
+                                    <field name="date_order"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Định nghĩa menu liên kết với action -->
+    <menuitem id="patient_tag_menu"
+              name="Patient Tags"
+              action="action_patient_tag_tree"
+              parent="configuration_master_menu"
+              sequence="0"
+    />
+</odoo>

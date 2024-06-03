@@ -16,8 +16,8 @@
               sequence="0"
     />
     <menuitem id="customer_master_menu"
-          name="Customer"
-          parent="hospital_root_menu"
-          sequence="0"
+              name="Customer"
+              parent="hospital_root_menu"
+              sequence="0"
     />
 </odoo>

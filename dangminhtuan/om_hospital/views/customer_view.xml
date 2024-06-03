@@ -4,9 +4,9 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-<!--            <field name="vat" position="after">-->
-<!--                <field name="x_identity_card" placeholder="Nhập chứng minh thư"/>-->
-<!--            </field>-->
+            <!--            <field name="vat" position="after">-->
+            <!--                <field name="x_identity_card" placeholder="Nhập chứng minh thư"/>-->
+            <!--            </field>-->
             <xpath expr="//field[@name='vat']" position="after">
                 <field name="x_identity_card" placeholder="Nhập chứng minh thư"/>
             </xpath>
@@ -22,15 +22,15 @@
     </record>
 
     <record id="sale_order_tree_view" model="ir.ui.view">
-            <field name="name">sale.order.tree</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_tree"/>
-            <field name="arch" type="xml">
-                <tree>
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <tree>
 
-                </tree>
-            </field>
-        </record>
+            </tree>
+        </field>
+    </record>
 
     <menuitem id="customer_menu"
               name="Customer"

@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-
 {
-    'name': 'Hospital Management',
+    'name': 'odoo training',
     'version': '1.0.0',
-    'category': 'Hospital',
+    'category': 'odoo training',
     'author': 'SirCryALot',
     'sequence': -100,
-    'summary': 'Hospital management system',
+    'summary': 'Odoo training',
     'description': """
-Hospital management system
+Odoo training
     """,
     'depends': ['mail', 'product', 'base', 'sale'],
     'data': [

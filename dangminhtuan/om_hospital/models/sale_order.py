@@ -1,10 +1,11 @@
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
 
-class SaleOrder(models.Model):
+
+class Order(models.Model):
     _inherit = 'sale.order'
 
-    tag_ids = fields.Many2many('patient.tag',relation='tag_order_rel', column2='order_ids', column1='tag_ids' , string='Tags')
+    tag_ids = fields.Many2many('patient.tag', relation='tag_order_rel', column2='order_ids', column1='tag_ids',
+                               string='Tags')
 
     @api.model
     def _get_report_values(self, docids, data=None):

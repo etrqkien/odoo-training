@@ -1,4 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access.patient.tag.lines,access_patient_tag,om_hospital.model_patient_tag,base.group_user,1,1,1,1
-access.cancel.res.country.state.district,access_res_country_state_district,om_hospital.model_res_country_state_district,base.group_user,1,1,1,1
-access.sale.order,access_sale_order,om_hospital.model_sale_order,base.group_user,1,1,1,1
+access.cancel.res.state.district,access_res_state_district,om_hospital.model_res_state_district,base.group_user,1,1,1,1

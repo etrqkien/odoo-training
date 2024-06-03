@@ -5,7 +5,9 @@
                 <h2>Order Names</h2>
                 <ul>
                     <t t-foreach="docs" t-as="doc">
-                        <li><t t-esc="doc.name"/></li>
+                        <li>
+                            <t t-esc="doc.name"/>
+                        </li>
                     </t>
                 </ul>
             </div>

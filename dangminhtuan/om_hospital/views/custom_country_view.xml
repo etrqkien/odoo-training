@@ -4,8 +4,8 @@
 
         <!-- District -->
         <record id="view_country_district_tree" model="ir.ui.view">
-            <field name="name">res.country.state.district.tree</field>
-            <field name="model">res.country.state.district</field>
+            <field name="name">res.state.district.tree</field>
+            <field name="model">res.state.district</field>
             <field name="arch" type="xml">
                 <tree string="District" editable="bottom">
                     <field name="name"/>
@@ -16,8 +16,8 @@
         </record>
 
         <record id="view_country_district_form" model="ir.ui.view">
-            <field name="name">res.country.state.district.form</field>
-            <field name="model">res.country.state.district</field>
+            <field name="name">res.state.district.form</field>
+            <field name="model">res.state.district</field>
             <field name="arch" type="xml">
                 <form string="District">
                     <sheet>
@@ -32,8 +32,8 @@
         </record>
 
         <record id="view_country_district_search" model="ir.ui.view">
-            <field name="name">res.country.state.district.search</field>
-            <field name="model">res.country.state.district</field>
+            <field name="name">res.state.district.search</field>
+            <field name="model">res.state.district</field>
             <field name="arch" type="xml">
                 <search string="district">
                     <field name="name"/>
@@ -47,7 +47,7 @@
 
         <record id="action_country_district" model="ir.actions.act_window">
             <field name="name">Districts</field>
-            <field name="res_model">res.country.state.district</field>
+            <field name="res_model">res.state.district</field>
             <field name="view_id" ref="view_country_district_tree"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">

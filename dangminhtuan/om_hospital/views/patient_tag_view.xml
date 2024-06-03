@@ -19,7 +19,6 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="active" widget="boolean_toggle"/>
             </tree>
         </field>
     </record>
@@ -33,8 +32,6 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="color" widget="color_picker"/>
-                            <field name="active" widget="boolean_toggle"/>
                         </group>
                     </group>
                     <notebook>

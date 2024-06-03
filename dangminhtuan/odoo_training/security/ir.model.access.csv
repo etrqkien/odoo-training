@@ -1,2 +1,1 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access.order.tag.lines,access_order_tag,odoo_training.model_order_tag,base.group_user,1,1,1,1

@@ -14,6 +14,10 @@
         <field name="model">order.tag</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_open_select_orders_wizard" string="Select orders" type="object"
+                            class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -34,6 +38,21 @@
         </field>
     </record>
 
+    <record id="view_select_orders_wizard_form" model="ir.ui.view">
+        <field name="name">select.orders.wizard.form</field>
+        <field name="model">select.orders.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="sale_order_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button string="Save" type="object" name="action_save" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
 
     <!-- Định nghĩa menu liên kết với action -->
     <menuitem id="order_tag_menu"

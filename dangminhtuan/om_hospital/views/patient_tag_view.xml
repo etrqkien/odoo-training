@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="view_hospital_patient_tag_search" model="ir.ui.view">
-        <field name="name">hospital.patient.search</field>
-        <field name="model">hospital.patient</field>
-        <field name="arch" type="xml">
-            <search>
-
-            </search>
+    <!-- Action mở view tree của patient.tag -->
+    <record id="action_patient_tag_tree" model="ir.actions.act_window">
+        <field name="name">Patient Tags</field>
+        <field name="res_model">patient.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_hospital_patient_tag_tree"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first patient tag
+            </p>
         </field>
     </record>
 
+    <!-- Định nghĩa view tree và form của patient.tag -->
     <record id="view_hospital_patient_tag_tree" model="ir.ui.view">
         <field name="name">patient.tag.tree</field>
         <field name="model">patient.tag</field>
@@ -35,23 +38,14 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Patients">
-                            <field name="patient_ids">
-                                <tree editable="bottom">
-                                    <field name="name"/>
-                                    <field name="date_of_birth"/>
-                                    <field name="gender"/>
-                                </tree>
-                            </field>
-                        </page>
                         <page string="Orders">
                             <field name="sale_order_ids">
-                            <tree string="Sale Orders">
-                                <field name="name"/>
-                                <field name="partner_id"/>
-                                <field name="date_order"/>
-                            </tree>
-                        </field>
+                                <tree string="Sale Orders">
+                                    <field name="name"/>
+                                    <field name="partner_id"/>
+                                    <field name="date_order"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
@@ -59,23 +53,11 @@
         </field>
     </record>
 
-    <record id="action_hospital_patient_tag" model="ir.actions.act_window">
-        <field name="name">Patients</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">patient.tag</field>
-        <field name="view_mode">tree,form</field>
-        <field name="context">{}</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Create your first patient!
-            </p>
-        </field>
-    </record>
-
+    <!-- Định nghĩa menu liên kết với action -->
     <menuitem id="patient_tag_menu"
               name="Patient Tags"
-              action="action_hospital_patient_tag"
-              parent="patient_tag_master_menu"
+              action="action_patient_tag_tree"
+              parent="configuration_master_menu"
               sequence="0"
     />
 </odoo>

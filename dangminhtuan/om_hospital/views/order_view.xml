@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
         <!-- Inherit the existing sale order form view -->
@@ -66,7 +65,7 @@
         <menuitem id="order_menu"
                   name="Order"
                   action="action_order"
-                  parent="patient_master_menu"
+                  parent="order_master_menu"
                   sequence="0"/>
     </data>
 </odoo>

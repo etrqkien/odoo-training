@@ -10,7 +10,7 @@
                 <tree string="District" editable="bottom">
                     <field name="name"/>
                     <field name="code"/>
-<!--                    <field name="country_id" options="{'no_create': True, 'no_open': True}"/>-->
+                    <!--                    <field name="country_id" options="{'no_create': True, 'no_open': True}"/>-->
                 </tree>
             </field>
         </record>
@@ -24,7 +24,7 @@
                         <group>
                             <field name="name"/>
                             <field name="code"/>
-<!--                            <field name="country_id" options='{"no_open": True, "no_create": True}'/>-->
+                            <!--                            <field name="country_id" options='{"no_open": True, "no_create": True}'/>-->
                         </group>
                     </sheet>
                 </form>
@@ -37,9 +37,9 @@
             <field name="arch" type="xml">
                 <search string="district">
                     <field name="name"/>
-<!--                    <field name="country_id"/>-->
+                    <!--                    <field name="country_id"/>-->
                     <group string="Group By">
-<!--                        <filter name="groupby_country" string="Country" context="{'group_by': 'country_id'}"/>-->
+                        <!--                        <filter name="groupby_country" string="Country" context="{'group_by': 'country_id'}"/>-->
                     </group>
                 </search>
             </field>
@@ -52,29 +52,29 @@
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create a District
-                </p><p>
+                </p>
+                <p>
                     Federal District belong to countries and are part of your contacts' addresses.
                 </p>
             </field>
         </record>
 
         <menuitem id="menu_localisation" name="Localization"
-        parent="patient_tag_master_menu" sequence="5"/>
+                  parent="configuration_master_menu" sequence="5"/>
 
-    <menuitem id="base.menu_country_partner"
-        action="base.action_country" parent="menu_localisation"
-        sequence="1"/>
+        <menuitem id="base.menu_country_partner"
+                  action="base.action_country" parent="menu_localisation"
+                  sequence="1"/>
 
 
+        <menuitem id="base.menu_country_state_partner"
+                  action="base.action_country_state"
+                  parent="menu_localisation"
+                  sequence="2"/>
 
-    <menuitem id="base.menu_country_state_partner"
-        action="base.action_country_state"
-        parent="menu_localisation"
-        sequence="2"/>
-
-    <menuitem id="menu_country_district_partner"
-        action="action_country_district"
-        parent="menu_localisation"
-        sequence="3"/>
+        <menuitem id="menu_country_district_partner"
+                  action="action_country_district"
+                  parent="menu_localisation"
+                  sequence="3"/>
     </data>
 </odoo>

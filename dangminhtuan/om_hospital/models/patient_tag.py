@@ -7,5 +7,4 @@ class PatientTag(models.Model):
     name = fields.Char(string='Name', required=True)
     active = fields.Boolean(string='Active', default=True)
     color = fields.Integer(string='Color')
-    patient_ids = fields.Many2many('hospital.patient', string='Patients')
     sale_order_ids = fields.Many2many('sale.order',relation='tag_order_rel', column1='order_ids', column2='tag_ids', string='Sale Orders')

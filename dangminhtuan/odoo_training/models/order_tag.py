@@ -6,6 +6,6 @@ class OrderTag(models.Model):
 
     name = fields.Char(string='Name', required=True)
     color = fields.Integer(string='Color')
-    sale_order_ids = fields.Many2many('sale.order', relation='tag_order_rel', column1='order_ids', column2='tag_ids',
+    sale_order_ids = fields.Many2many('sale.order', relation='tag_order_rel', column1='order_id', column2='tag_id',
                                       string='Sale Orders')
 

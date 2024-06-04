@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <!-- Inherit the existing sale order form view -->
+        <record id="view_sale_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Locate the position after the customer_signature page -->
+                <xpath expr="//page[@name='customer_signature']" position="after">
+                    <page string="Tag" name="tag_ids">
+                        <field name="tag_ids" widget="many2many_checkboxes"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

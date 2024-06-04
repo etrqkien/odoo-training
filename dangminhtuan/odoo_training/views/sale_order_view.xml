@@ -14,14 +14,5 @@
                 </xpath>
             </field>
         </record>
-
-        <!-- Define the action for the Order Form -->
-        <record id="action_sale_order" model="ir.actions.act_window">
-            <field name="name">Order Form</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_mode">tree,form</field>
-            <field name="target">current</field>
-        </record>
     </data>
 </odoo>

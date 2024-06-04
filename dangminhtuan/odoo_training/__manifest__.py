@@ -14,7 +14,7 @@ training odoo
     'data': [
         'security/ir.model.access.csv',
         'views/res_partner_view.xml',
-        'views/tag_view.xml',
+        'views/order_tag_view.xml',
         'views/sale_order_view.xml',
     ],
     'demo': [],

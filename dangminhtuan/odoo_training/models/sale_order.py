@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Order(models.Model):
@@ -6,3 +6,5 @@ class Order(models.Model):
 
     tag_ids = fields.Many2many('order.tag', relation='tag_order_rel', column2='order_ids', column1='tag_ids',
                                string='Tags')
+
+

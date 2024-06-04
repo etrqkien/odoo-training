@@ -15,8 +15,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_open_select_orders_wizard" string="Select orders" type="object"
-                            class="oe_highlight"/>
+                    <button name="action_open_select_orders_wizard" string="Select orders" type="object" class="oe_highlight"/>
                 </header>
                 <sheet>
                     <group>

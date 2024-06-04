@@ -48,7 +48,7 @@
                 <xpath expr="//search" position="inside">
                     <filter string="Has tag"
                             name="has_tag"
-                            domain="[('tag_ids', '!=', False)]"/>
+                            domain="[('tag_id', '!=', False)]"/>
                 </xpath>
             </field>
         </record>

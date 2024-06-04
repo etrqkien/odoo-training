@@ -1,0 +1,44 @@
+<odoo>
+    <!-- Action mở view tree của order.tag -->
+    <record id="action_order_tag" model="ir.actions.act_window">
+        <field name="name">Order Tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">order.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Định nghĩa view tree và form của order.tag -->
+    <record id="view_order_tag_form" model="ir.ui.view">
+        <field name="name">order.tag.form</field>
+        <field name="model">order.tag</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                        <page string="Orders">
+                            <field name="sale_order_ids">
+                                <tree string="Sale Orders">
+                                    <field name="name"/>
+                                    <field name="partner_id"/>
+                                    <field name="date_order"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Định nghĩa menu liên kết với action -->
+    <menuitem id="order_tag_menu"
+              name="Order Tags"
+              action="action_order_tag"
+              parent="sale.menu_sales_config"
+              sequence="20"
+    />
+</odoo>

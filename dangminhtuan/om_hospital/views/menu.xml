@@ -1,0 +1,23 @@
+<odoo>
+    <menuitem id="hospital_root_menu"
+              name="Hospital"
+              web_icon="om_hospital,static/description/icon.png"
+              sequence="0"
+    />
+    <menuitem id="order_master_menu"
+              name="Order"
+              parent="hospital_root_menu"
+              sequence="0"
+    />
+
+    <menuitem id="configuration_master_menu"
+              name="Configuration"
+              parent="hospital_root_menu"
+              sequence="0"
+    />
+    <menuitem id="customer_master_menu"
+              name="Customer"
+              parent="hospital_root_menu"
+              sequence="0"
+    />
+</odoo>

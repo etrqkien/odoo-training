@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+        <!-- Inherit the existing sale order form view -->
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Locate the position after the customer_signature page -->
+                <xpath expr="//page[@name='customer_signature']" position="after">
+                    <page string="Tag" name="tag_ids">
+                        <field name="tag_ids" widget="many2many_checkboxes" options="{'color_field': 'color'}"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Define the action for printing the A5 report -->
+        <record id="report_saleorder_a5_action" model="ir.actions.report">
+            <field name="name">Print Order Names A5</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">om_hospital.report_saleorder_a5</field>
+            <field name="report_file">om_hospital.report_saleorder_a5</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">action</field>
+        </record>
+
+        <!-- Modify the sale order tree view to include the new button -->
+        <record id="sale_order_tree_view" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="%(report_saleorder_a5_action)d" string="Print Order Names A5" type="action"
+                            class="oe_highlight"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit the existing search view for sale order -->
+        <record id="sale_order_search_view_inherit" model="ir.ui.view">
+            <field name="name">sale.order.search.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <filter string="Has tag"
+                            name="has_tag"
+                            domain="[('tag_ids', '!=', False)]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Define the action for the Order Form -->
+        <record id="action_order" model="ir.actions.act_window">
+            <field name="name">Order Form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <!-- Add a menu item for the Order Form -->
+        <menuitem id="order_menu"
+                  name="Order"
+                  action="action_order"
+                  parent="order_master_menu"
+                  sequence="0"/>
+    </data>
+</odoo>

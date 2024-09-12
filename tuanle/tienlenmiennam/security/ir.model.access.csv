@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+tienlenmiennam_play_match_access,tienlenmiennam_play_match_access,model_play_match,,1,1,1,1
+tienlenmiennam_play_room_access,tienlenmiennam_play_room_access,model_play_room,,1,1,1,1

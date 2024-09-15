@@ -12,7 +12,7 @@ class SaleOderTag(models.Model):
     def open_parent(self):
         return {
             'name': 'Orders of the Tag',
-            'domain': [('tag_ids', '=', self.name), ('state', '=', 'sale')],
+            'domain': [('tag_ids', 'in', self.ids), ('state', '=', 'sale')],
             'view_type': 'form',
             'res_model': 'sale.order',
             'view_id': False,
@@ -21,5 +21,10 @@ class SaleOderTag(models.Model):
         }
 
     def orders_count(self):
-        count = self.env['sale.order'].search_count([('tag_ids', '=', self.name), ('state', '=', 'sale')])
+        count = self.env['sale.order'].search_count([('tag_ids', 'in', self.ids), ('state', '=', 'sale')])
         self.order_count = count
+
+    def clear_tag(self):
+        seach_order = self.env['sale.order'].search([('tag_ids', 'in', self.ids), ('state', '=', 'sale')])
+        for order in seach_order:
+            order.tag_ids = [(3, self.id, 0)]

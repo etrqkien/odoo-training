@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    add form view-->
+    <record id="sale_order_tag_wizard_form" model="ir.ui.view">
+        <field name="name">Sale Order Tag Wizard Form View</field>
+        <field name="model">sale.order.tag.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="order_ids">
+                            <tree>
+                                <field name="user_id"/>
+                                <field name="currency_id"/>
+                                <field name="company_id"/>
+                                <field name="origin"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Save" type="object" name="add_sale_order" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--    add the action-->
+    <record id="action_wizard_add_order" model="ir.actions.act_window">
+        <field name="name">Select Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order.tag.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field> <!-- thêm vào để lên pop-up -->
+    </record>
+</odoo>

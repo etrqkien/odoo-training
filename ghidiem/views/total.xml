@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    add tree view-->
+    <record id="total_view_tree" model="ir.ui.view">
+        <field name="name">Total List</field>
+        <field name="model">total.points</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="date"/>
+                <field name="player"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--    add the action-->
+    <record id='tong_action' model='ir.actions.act_window'>
+        <field name="name">Tổng</field>
+        <field name="res_model">total.points</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--    add the menu item-->
+    <menuitem name="Tổng điểm" id="tong_diem_menu" parent="ghi_diem_base_menu" />
+    <menuitem name="Tổng" id="tong_menu" parent="tong_diem_menu" action="tong_action" />
+
+</odoo>
+

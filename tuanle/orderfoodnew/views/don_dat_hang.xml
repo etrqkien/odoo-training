@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id ='don_dat_hang_action' model='ir.actions.act_window'>
+            <field name="name">Đơn hàng</field>
+            <field name="res_model">don.dat.hang</field>
+            <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record id="don_dat_hang_tree_view" model="ir.ui.view">
+        <field name="name"> Đặt hàng</field>
+        <field name="model">don.dat.hang</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="phi_ship"/>
+                <field name="discount"/>
+                <field name="surcharge"/>
+                <field name="thanh_tien"/>
+                <field name="type_discount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="don_dat_hang_form_view" model="ir.ui.view">
+        <field name="name">Đơn đặt hàng</field>
+        <field name="model">don.dat.hang</field>
+        <field name="arch" type="xml">
+            <form class="o_lead_opportunity_form" js_class="crm_form">
+                <sheet>
+                        <group colspan="2">
+                            <group>
+                                <field name="name"/>
+                                <field name="date_order"/>
+                                <field name="thanh_tien" widget="monetary"/>
+                                <field name="discount" widget="monetary"/>
+                                <field name="phi_ship" widget="monetary"/>
+                                <field name="surcharge" widget="monetary"/>
+                                <field name="currency_id" groups="base.group_multi_currency"/>
+                                <field name="qr_pay" style="width: 20%" class="oe_avatar" widget="image"/>
+                            </group>
+                            <group>
+                                <field name="shop_id"/>
+                                <field name="link_menu"/>
+                                <field name="type_discount"/>
+                                <field name="pay_more" widget="monetary"/>
+                                <field name="payer_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="ct_dat_hang" string="Chi tiết">
+                                <field name="ct_dat_hang_ids">
+                                    <tree string="Tính tiền" editable="bottom">
+                                        <field name="partner_id"/>
+                                        <field name="dish_id"/>
+                                        <field name="so_luong"/>
+                                        <field name="price"/>
+                                        <field name="amount_residual"/>
+                                        <field name="da_thanh_toan"/>
+                                        <field name="payment"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

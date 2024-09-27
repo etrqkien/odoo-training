@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="aoe_id" model="ir.ui.view">
+            <field name="name">Name</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <form>
+                    <button name = 'test_button' type="object" string="Check ISBN">
+                        <field name="abc">abc</field>
+                    </button>
+                    <field name="abc">abc</field>
+                    <field name="tag_ids">Tag ids</field>
+                </form>
+            </field>
+
+        </record>
+        <record id="aoe_id1" model="ir.ui.view">
+            <field name="name">Name1</field>
+            <field name="model">sale.order.tag</field>
+            <field name="arch" type="xml">
+                <form>
+                    <button name = 'test_button' type="object" string="Check ISBN"/>
+<!--                        <field name="abc"></field></button>-->
+                    <field name="name">Name</field>
+<!--                    <field name="abc">abc</field>-->
+                </form>
+
+            </field>
+
+        </record>
+<!--        <record id="sale_form_inherit" model="ir.ui.view">-->
+<!--            <field name="model">sale.order.tag</field>-->
+<!--            <field name="inherit_id" ref="base.view_partner_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='vat']" position="after">-->
+<!--                    <field name="name"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="sale_form_inherit1" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_management.sale_order_form_quote"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                    <field name="tag_ids" widget="many2many_checkboxes"/>
+<!--                    <button name ='test_button' type="object" string="Check ISBN">-->
+<!--                        <field name="abc">abc</field>-->
+<!--                    </button>-->
+<!--                    <field name="abc">abc</field>-->
+                </xpath>
+                <xpath expr="//button[@name='action_view_invoice']" position="after" widget="percentage">
+                    <button name = 'test_button' type="object" string="test">
+                        <field name="abc">abc</field>
+                    </button>
+                </xpath>
+
+            </field>
+        </record>
+        <record id="sale_order_view_search_inherit_sale" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                    <separator/>
+                        <field name="tag_ids" filter_domain="[('expected_date','ilike', self)]"/>
+                        <filter string="Product" name="tag_ids" domain="[('tag_ids','=','Product')]"/>
+                        <filter string="Software" name="tag_ids" domain="[('tag_ids','=','Software')]"/>
+                        <filter string="Services" name="tag_ids" domain="[('tag_ids','=','Services')]"/>
+                        <filter string="Information" name="tag_ids" domain="[('tag_ids','=','Information')]"/>
+                        <filter string="Design" name="tag_ids" domain="[('tag_ids','=','Design')]"/>
+                        <filter string="Training" name="tag_ids" domain="[('tag_ids','=','Training')]"/>
+                        <filter string="Consulting" name="tag_ids" domain="[('tag_ids','=','Consulting')]"/>
+                        <filter string="Other" name="tag_ids" domain="[('tag_ids','=','Other')]"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+<!--        <record id="sale_order_tags" model="ir.ui.view">-->
+<!--            <field name="name">saleOrderTags</field>-->
+<!--            <field name="model">sale.order.tags</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="cmt"/>-->
+<!--                    <field name="Tags"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+    </data>
+</odoo>

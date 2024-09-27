@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.actions.act_window" id="sale_order_tags_action">
+        <field name="name">Name</field>
+        <field name="res_model">sale.order.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+<!--    <menuitem name="tag_ids" id ='sale.menu_sale_config' action="sales_team.crm_team_view_tree"/>-->
+<!--        <record id="abc_team_act_tree" model="ir.actions.act_window">-->
+<!--            <field name="name">abc</field>-->
+<!--            <field name="res_model">sale.order.tags</field>-->
+<!--            <field name="view_id" ref="sales_team.crm_team_view_tree"/>-->
+<!--        </record>-->
+
+      <menuitem id="abc_menu_sale" name="Order Tags" parent="sale.menu_sale_config" action="sale_order_tags_action" sequence="2"/>
+  </data>
+</odoo>
+<!-- -d SaleTrainingT  -u sale_t-->
+<!--<menuitem name="nhà quân" id="menu_3_list" parent="menu_root2" action="aoe_list_act2"/>-->
+<!--<menuitem name="nhà quân" id="menu_3_list" parent="menu_root2" action="aoe_list_act2"/>-->

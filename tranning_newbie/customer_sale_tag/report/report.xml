@@ -1,0 +1,56 @@
+<odoo>
+
+    <record id="report_sale_order_form" model="report.paperformat">
+        <field name="name">Sale Order</field>
+        <field name="default" eval="True"/>
+        <field name="format">A5</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">3</field>
+        <field name="margin_bottom">3</field>
+        <field name="margin_left">3</field>
+        <field name="margin_right">3</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">3</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <record id="report_sale_order" model="ir.actions.report">
+        <field name="name">Order Card</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">customer_sale_tag.report_sale_order</field>
+        <field name="report_file">customer_sale_tag.report_sale_order</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_sale_order">
+        <t t-set="o" t-value="doc"/>
+        <t t-call="web.basic_layout">
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Name</strong></th>
+                    <th><strong>Date</strong></th>
+                    <th><strong>Customer</strong></th>
+                    <th><strong>Salesperson</strong></th>
+                    <th><strong>Total</strong></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr t-foreach="docs" t-as="doc">
+                    <td><span t-field="doc.name"/></td>
+                    <td><span t-field="doc.create_date"/></td>
+                    <td><span t-field="doc.partner_id"/></td>
+                    <td><span t-field="doc.user_id"/></td>
+                    <td><span t-field="doc.amount_total"/></td>
+
+                </tr>
+            </tbody>
+        </table>
+        </t>
+    </template>
+</odoo>

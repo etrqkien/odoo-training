@@ -3,7 +3,15 @@
 <odoo>
     <data>
 
-        <!-- Actions for the menu items -->
+        <!--Các hành động của cửa sổ được lưu trữ trong mô hình ir.ilities.act_window và có thể được xác định trong các tệp XML bằng cách sử dụng-->
+<!--phím tắt <act_window> được sử dụng trong mã trước đó.-->
+<!--Hành động đầu tiên sẽ mở mô hình task stage và bao gồm các thuộc tính phù hợp nhất cho cửa sổ-->
+<!--hành động-->
+        <!--res_model là định danh của mô hình đích-->
+        <!--view_mode là kiểu xem có sẵn và thứ tự của chúng-->
+        <!--tên miền là một biểu thức miền buộc một bộ lọc cho các bản ghi sẽ được duyệt trong phần mở lượt xem-->
+        <!--limit : số lượng hồ sơ hiển thị tối đa mỗi trang-->
+
         <act_window id="action_todo_stage"
                     name="To-Do Task Stages"
                     res_model="todo.task.stage"
@@ -21,6 +29,8 @@
                     context="{'search_default_filter_my_tasks': True}"
         />
         <!-- Add option to the "More" button -->
+        <!--src chỉ ra mô hình nào mà hành động này được cung cấp-->
+        <!--multi = false : chỉ có sẵn trong chế dộ xem form và áp dụng cho 1 bản ghi tại 1 thời điểm -->
         <act_window id="action_todo_task_stage"
                     name="To-Do Task Stages"
                     res_model="todo.task.stage"
@@ -29,11 +39,14 @@
         />
 
         <!-- Menu items -->
-        <!-- Modify top menu item -->
+        <!--menu cấp cao nhất-->
         <menuitem id="tienvv_todo_user.menu_todo_task"
-                  name="Chap5"/>
+                  name="Todo_UI"/>
 
-        <!-- App menu items -->
+        <!--menu ứng dụng-->
+        <!--parent : sử dụng cấp cao nhất-->
+        <!--dùng hành động: action : tienvv_todo_user.action_todo_task-->
+        <!--<menuitem>, cung cấp một cách viết tắt để xác định bản ghi cần tải-->
         <menuitem id="menu_todo_task_view"
                   name="Tasks"
                   parent="tienvv_todo_user.menu_todo_task"
